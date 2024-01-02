@@ -128,7 +128,8 @@
           "current_study_event": {
             "type": "string",
             "description": "The study event the subject is currently in",
-            "example": "DAY1"
+            "example": "DAY1",
+            "nullable": true
           },
           "created_at": {
             "type": "string",
