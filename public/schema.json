@@ -50,9 +50,7 @@
             }
           }
         ],
-        "tags": [
-          "Example"
-        ],
+        "tags": ["Example"],
         "responses": {
           "200": {
             "description": "OK",
@@ -69,6 +67,12 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "$ref": "#/components/responses/Conflict"
@@ -153,6 +157,48 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not found. The requested resource was not found.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "An error",
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Not found",
+                  "enum": ["Not found"]
+                }
+              },
+              "required": ["error"],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. The request was valid, but the server is refusing action.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "You do not have sufficient permission to perform this action",
+                  "enum": [
+                    "You do not have sufficient permission to perform this action",
+                    "Forbidden"
+                  ]
+                }
+              }
             }
           }
         }
