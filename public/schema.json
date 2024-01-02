@@ -61,7 +61,7 @@
             }
           }
         ],
-        "tags": ["Example"],
+        "tags": ["Subjects"],
         "responses": {
           "200": {
             "description": "OK",
@@ -69,6 +69,84 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Subjects"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_id}": {
+      "get": {
+        "summary": "Get a specific subject for a site",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getSubject",
+        "description": "Get a specific subject for a site",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_id",
+            "in": "path",
+            "description": "The subject id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "tags": ["Subjects"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subject"
                 }
               }
             }
