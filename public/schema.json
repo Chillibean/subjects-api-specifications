@@ -26,9 +26,9 @@
     }
   ],
   "paths": {
-    "/example": {
+    "/accounts/{account_id}/sites/{site_id}/subjects": {
       "get": {
-        "summary": "Example endpoint",
+        "summary": "Get all subjects for a site",
         "security": [
           {
             "userSessionKey": []
@@ -37,16 +37,27 @@
             "chillipharmSession": []
           }
         ],
-        "operationId": "getExample",
-        "description": "This is an example endpoint",
+        "operationId": "getSubjects",
+        "description": "Get all subjects for a site",
         "parameters": [
           {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_id",
+            "in": "path",
+            "description": "The site id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
             }
           }
         ],
@@ -57,7 +68,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
+                  "$ref": "#/components/schemas/Subjects"
                 }
               }
             }
@@ -100,12 +111,37 @@
       }
     },
     "schemas": {
-      "ExampleResponse": {
+      "Subject": {
+        "description": "A subject",
         "type": "object",
         "properties": {
-          "example": {
-            "type": "string"
+          "id": {
+            "type": "number",
+            "description": "The subject id",
+            "example": 1
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The serial number of the subject",
+            "example": "E001004"
+          },
+          "current_study_event": {
+            "type": "string",
+            "description": "The study event the subject is currently in",
+            "example": "DAY1"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Date time for when the subject was created",
+            "example": "2024-01-02T11:06:48.566Z"
           }
+        }
+      },
+      "Subjects": {
+        "description": "A list of subjects",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Subject"
         }
       },
       "Error": {
