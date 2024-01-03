@@ -146,7 +146,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubjectWithSchedule"
+                  "properties": {
+                    "schedule": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Event"
+                      }
+                    },
+                    "subject": {
+                      "$ref": "#/components/schemas/Subject"
+                    }
+                  }
                 }
               }
             }
@@ -214,7 +224,14 @@
             "description": "Date time for when the subject was created",
             "example": "2024-01-02T11:06:48.566Z"
           }
-        }
+        },
+        "required": [
+          "id",
+          "subject_number",
+          "current_study_event",
+          "created_at"
+        ],
+        "additionalProperties": false
       },
       "Subjects": {
         "description": "A list of subjects",
@@ -273,7 +290,9 @@
             "type": "string",
             "example": "123e4567-e89b-12d3-a456-426655440000"
           }
-        }
+        },
+        "required": ["id", "first_name", "last_name", "email"],
+        "additionalProperties": false
       },
       "RoleDefinition": {
         "description": "A role definition",
@@ -305,7 +324,9 @@
               }
             }
           }
-        }
+        },
+        "required": ["id", "required", "role"],
+        "additionalProperties": false
       },
       "RoleDefinitionWithContributors": {
         "description": "A role definition",
@@ -344,7 +365,9 @@
               }
             }
           }
-        }
+        },
+        "required": ["id", "required", "contributors", "role"],
+        "additionalProperties": false
       },
       "Protocol": {
         "description": "Protocol for a procedure/event",
@@ -409,22 +432,32 @@
             "type": "number",
             "example": 1
           }
-        }
+        },
+        "required": [
+          "id",
+          "name",
+          "study_event_display_name",
+          "study_procedure_display_name",
+          "locked",
+          "version_number",
+          "study_procedure_role_definitions"
+        ],
+        "additionalProperties": false
       },
       "Procedure": {
         "description": "A procedure for an event",
         "type": "object",
         "properties": {
-          "date": {
-            "type": "string",
-            "description": "The date of the procedure",
-            "example": "2024-01-02",
-            "nullable": true
-          },
           "id": {
             "type": "number",
             "description": "The procedure id",
             "example": 1,
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the procedure",
+            "example": "2024-01-02",
             "nullable": true
           },
           "display_name": {
@@ -459,7 +492,17 @@
               "not_required"
             ]
           }
-        }
+        },
+        "required": [
+          "id",
+          "identifier",
+          "display_name",
+          "date",
+          "protocol",
+          "role_definitions",
+          "status"
+        ],
+        "additionalProperties": false
       },
       "Event": {
         "description": "A scheduled event for a subject",
@@ -520,26 +563,19 @@
             "example": "scheduled",
             "enum": ["scheduled", "unscheduled"]
           }
-        }
-      },
-      "Schedule": {
-        "description": "Schedule for a subject",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Event"
-        }
-      },
-      "SubjectWithSchedule": {
-        "description": "Subject with a schedule",
-        "type": "object",
-        "properties": {
-          "subject": {
-            "$ref": "#/components/schemas/Subject"
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/Schedule"
-          }
-        }
+        },
+        "required": [
+          "identifier",
+          "display_name",
+          "date",
+          "status",
+          "procedures",
+          "study_arm",
+          "protocol",
+          "study_event_type",
+          "position"
+        ],
+        "additionalProperties": false
       },
       "Error": {
         "description": "An error",
