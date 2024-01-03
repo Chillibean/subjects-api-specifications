@@ -929,7 +929,8 @@
           "position": {
             "type": "number",
             "description": "The position of the event",
-            "example": 1
+            "example": 1,
+            "nullable": true
           },
           "procedures": {
             "type": "array",
