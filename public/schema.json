@@ -11,8 +11,8 @@
   },
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Subjects",
+      "description": "Subject endpoints"
     }
   ],
   "servers": [
@@ -103,7 +103,7 @@
             "chillipharmSession": []
           }
         ],
-        "operationId": "getSubjects",
+        "operationId": "createSubject",
         "description": "Get all subjects for a site",
         "parameters": [
           {
@@ -230,6 +230,122 @@
         "responses": {
           "200": {
             "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "schedule": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Event"
+                      }
+                    },
+                    "subject": {
+                      "$ref": "#/components/schemas/Subject"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a subject for a site",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "updateSubject",
+        "description": "update a subject for a site",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_id",
+            "in": "path",
+            "description": "The subject id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "type": "string",
+                    "description": "The authenticity token",
+                    "example": "1234567890"
+                  },
+                  "study_arm_id": {
+                    "type": "number",
+                    "description": "The study arm id",
+                    "example": 1,
+                    "nullable": true
+                  },
+                  "study_cohort_id": {
+                    "type": "number",
+                    "description": "The study cohort id",
+                    "example": 1,
+                    "nullable": true
+                  }
+                },
+                "required": ["authenticity_token"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "tags": ["Subjects"],
+        "responses": {
+          "200": {
+            "description": "Created subject",
             "content": {
               "application/json": {
                 "schema": {
