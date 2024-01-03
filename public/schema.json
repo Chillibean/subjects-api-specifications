@@ -422,6 +422,12 @@
             "example": "DAY1",
             "nullable": true
           },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm the subject is currently in",
+            "example": "Arm 1",
+            "nullable": true
+          },
           "created_at": {
             "type": "string",
             "description": "Date time for when the subject was created",
