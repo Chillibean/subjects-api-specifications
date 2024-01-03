@@ -384,6 +384,168 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_id}/scheduled_study_events": {
+      "get": {
+        "summary": "Get scheduled study events for a subject",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getSubjectScheduledStudyEvents",
+        "description": "Get scheduled study events for a subject",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_id",
+            "in": "path",
+            "description": "The subject id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "tags": ["Subjects"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_id}/unscheduled_study_events": {
+      "get": {
+        "summary": "Get unscheduled study events for a subject",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getSubjectUnscheduledStudyEvents",
+        "description": "Get unscheduled study events for a subject",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_id",
+            "in": "path",
+            "description": "The subject id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "tags": ["Subjects"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
