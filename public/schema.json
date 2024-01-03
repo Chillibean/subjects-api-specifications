@@ -146,7 +146,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Subject"
+                  "$ref": "#/components/schemas/SubjectWithSchedule"
                 }
               }
             }
@@ -221,6 +221,324 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Subject"
+        }
+      },
+      "Contributor": {
+        "description": "A role contributor",
+        "type": "object",
+        "properties": {
+          "admin": {
+            "description": "Whether the contributor is an admin",
+            "type": "boolean",
+            "example": true
+          },
+          "email": {
+            "description": "The email of the contributor",
+            "type": "string",
+            "example": "fake@email.com"
+          },
+          "first_name": {
+            "description": "The first name of the contributor",
+            "type": "string",
+            "example": "John"
+          },
+          "id": {
+            "description": "The contributor id",
+            "type": "number",
+            "example": 1
+          },
+          "last_name": {
+            "description": "The last name of the contributor",
+            "type": "string",
+            "example": "Doe"
+          },
+          "role": {
+            "description": "The role of the contributor",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The role id",
+                "type": "number",
+                "example": 1
+              },
+              "name": {
+                "description": "The name of the role",
+                "type": "string",
+                "example": "Power User"
+              }
+            }
+          },
+          "uuid": {
+            "description": "The uuid of the contributor",
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426655440000"
+          }
+        }
+      },
+      "RoleDefinition": {
+        "description": "A role definition",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The role definition id",
+            "type": "number",
+            "example": 1
+          },
+          "required": {
+            "description": "Whether the role definition is required",
+            "type": "boolean",
+            "example": true
+          },
+          "role": {
+            "description": "The role of the role definition",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The role id",
+                "type": "number",
+                "example": 1
+              },
+              "name": {
+                "description": "The name of the role",
+                "type": "string",
+                "example": "Power User"
+              }
+            }
+          }
+        }
+      },
+      "RoleDefinitionWithContributors": {
+        "description": "A role definition",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The role definition id",
+            "type": "number",
+            "example": 1
+          },
+          "required": {
+            "description": "Whether the role definition is required",
+            "type": "boolean",
+            "example": true
+          },
+          "contributors": {
+            "description": "The contributors of the role definition",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contributor"
+            }
+          },
+          "role": {
+            "description": "The role of the role definition",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The role id",
+                "type": "number",
+                "example": 1
+              },
+              "name": {
+                "description": "The name of the role",
+                "type": "string",
+                "example": "Power User"
+              }
+            }
+          }
+        }
+      },
+      "Protocol": {
+        "description": "Protocol for a procedure/event",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The protocol id",
+            "type": "number",
+            "example": 1
+          },
+          "locked": {
+            "description": "locked status of the protocol",
+            "type": "boolean",
+            "example": false
+          },
+          "name": {
+            "description": "The name of the protocol",
+            "type": "string",
+            "example": "Ghost Protocol"
+          },
+          "study_event_display_name": {
+            "description": "The display name of the study event",
+            "type": "object",
+            "properties": {
+              "plural": {
+                "description": "The plural display name of the study event",
+                "type": "string",
+                "example": "visits"
+              },
+              "singular": {
+                "description": "The singular display name of the study event",
+                "type": "string",
+                "example": "visit"
+              }
+            }
+          },
+          "study_procedure_display_name": {
+            "description": "The display name of the study procedure",
+            "type": "object",
+            "properties": {
+              "plural": {
+                "description": "The plural display name of the study procedure",
+                "type": "string",
+                "example": "assessments"
+              },
+              "singular": {
+                "description": "The singular display name of the study procedure",
+                "type": "string",
+                "example": "assessment"
+              }
+            }
+          },
+          "study_procedure_role_definitions": {
+            "description": "The role definitions of the study procedure",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleDefinition"
+            }
+          },
+          "version_number": {
+            "description": "The version number of the protocol",
+            "type": "number",
+            "example": 1
+          }
+        }
+      },
+      "Procedure": {
+        "description": "A procedure for an event",
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the procedure",
+            "example": "2024-01-02",
+            "nullable": true
+          },
+          "id": {
+            "type": "number",
+            "description": "The procedure id",
+            "example": 1,
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the procedure",
+            "example": "North Star"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the procedure",
+            "example": "NSTAR"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/Protocol"
+          },
+          "role_definitions": {
+            "type": "array",
+            "description": "The role definitions of the procedure",
+            "items": {
+              "$ref": "#/components/schemas/RoleDefinitionWithContributors"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the procedure",
+            "example": "complete",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "complete",
+              "requires_attention",
+              "not_required"
+            ]
+          }
+        }
+      },
+      "Event": {
+        "description": "A scheduled event for a subject",
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the event",
+            "example": "2024-01-02",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the event",
+            "example": "Day 1"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the event",
+            "example": "DAY1"
+          },
+          "position": {
+            "type": "number",
+            "description": "The position of the event",
+            "example": 1
+          },
+          "procedures": {
+            "type": "array",
+            "description": "The procedures for the event",
+            "items": {
+              "$ref": "#/components/schemas/Procedure"
+            }
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/Protocol"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the event",
+            "example": "complete",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "complete",
+              "requires_attention",
+              "not_required"
+            ]
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm of the event",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "study_event_type": {
+            "type": "string",
+            "description": "The study event type of the event",
+            "example": "scheduled",
+            "enum": ["scheduled", "unscheduled"]
+          }
+        }
+      },
+      "Schedule": {
+        "description": "Schedule for a subject",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Event"
+        }
+      },
+      "SubjectWithSchedule": {
+        "description": "Subject with a schedule",
+        "type": "object",
+        "properties": {
+          "subject": {
+            "$ref": "#/components/schemas/Subject"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/Schedule"
+          }
         }
       },
       "Error": {
