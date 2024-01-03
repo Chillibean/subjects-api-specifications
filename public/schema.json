@@ -294,6 +294,22 @@
         "required": ["id", "first_name", "last_name", "email"],
         "additionalProperties": false
       },
+      "Role": {
+        "description": "A role",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The role id",
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "description": "The name of the role",
+            "type": "string",
+            "example": "Power User"
+          }
+        }
+      },
       "RoleDefinition": {
         "description": "A role definition",
         "type": "object",
@@ -309,20 +325,7 @@
             "example": true
           },
           "role": {
-            "description": "The role of the role definition",
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "The role id",
-                "type": "number",
-                "example": 1
-              },
-              "name": {
-                "description": "The name of the role",
-                "type": "string",
-                "example": "Power User"
-              }
-            }
+            "$ref": "#/components/schemas/Role"
           }
         },
         "required": ["id", "required", "role"],
@@ -350,20 +353,7 @@
             }
           },
           "role": {
-            "description": "The role of the role definition",
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "The role id",
-                "type": "number",
-                "example": 1
-              },
-              "name": {
-                "description": "The name of the role",
-                "type": "string",
-                "example": "Power User"
-              }
-            }
+            "$ref": "#/components/schemas/Role"
           }
         },
         "required": ["id", "required", "contributors", "role"],
