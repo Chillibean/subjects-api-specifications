@@ -905,6 +905,11 @@
         "description": "A scheduled event for a subject",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number",
+            "description": "The event id",
+            "example": 1
+          },
           "date": {
             "type": "string",
             "description": "The date of the event",
