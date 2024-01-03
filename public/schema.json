@@ -92,6 +92,93 @@
             "$ref": "#/components/responses/InternalServerError"
           }
         }
+      },
+      "post": {
+        "summary": "Add a subject to a site",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getSubjects",
+        "description": "Get all subjects for a site",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "type": "string",
+                    "description": "The authenticity token",
+                    "example": "1234567890"
+                  },
+                  "subject_number": {
+                    "type": "string",
+                    "description": "The subject number",
+                    "example": "E0001004"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Subjects"],
+        "responses": {
+          "200": {
+            "description": "Created subject",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subject"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
       }
     },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_id}": {
@@ -223,6 +310,42 @@
             "type": "string",
             "description": "Date time for when the subject was created",
             "example": "2024-01-02T11:06:48.566Z"
+          },
+          "created_by": {
+            "description": "name of subject creator",
+            "type": "string",
+            "example": "John Doe"
+          },
+          "creator": {
+            "type": "object",
+            "description": "The creator of the subject",
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The creator id",
+                "example": 1
+              },
+              "email": {
+                "type": "string",
+                "description": "The email of the creator",
+                "example": "test@user.com"
+              },
+              "first_name": {
+                "type": "string",
+                "description": "The first name of the creator",
+                "example": "John"
+              },
+              "last_name": {
+                "type": "string",
+                "description": "The last name of the creator",
+                "example": "Doe"
+              },
+              "uuid": {
+                "type": "string",
+                "description": "The uuid of the creator",
+                "example": "123e4567-e89b-12d3-a456-426655440000"
+              }
+            }
           }
         },
         "required": [
