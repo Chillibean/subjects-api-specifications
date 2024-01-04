@@ -590,7 +590,7 @@
             "example": "Arm 1",
             "nullable": true
           },
-          "study_cohort": {
+          "cohort": {
             "type": "string",
             "description": "The study cohort of the subject",
             "example": "Arm 1",
