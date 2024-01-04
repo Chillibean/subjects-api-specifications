@@ -590,6 +590,12 @@
             "example": "Arm 1",
             "nullable": true
           },
+          "study_cohort": {
+            "type": "string",
+            "description": "The study cohort of the subject",
+            "example": "Arm 1",
+            "nullable": true
+          },
           "created_at": {
             "type": "string",
             "description": "Date time for when the subject was created",
