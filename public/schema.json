@@ -13,6 +13,10 @@
     {
       "name": "Study Events",
       "description": "Endpoints for Study Events"
+    },
+    {
+      "name": "Study Subjects",
+      "description": "Endpoints for Study Subjects"
     }
   ],
   "servers": [
@@ -61,7 +65,7 @@
             }
           }
         ],
-        "tags": ["Study Events"],
+        "tags": ["Study Subjects"],
         "responses": {
           "200": {
             "description": "List of Subjects is returned",
@@ -148,7 +152,7 @@
             }
           }
         },
-        "tags": ["Study Events"],
+        "tags": ["Study Subjects"],
         "responses": {
           "200": {
             "description": "Created a study subject",
@@ -226,7 +230,7 @@
             }
           }
         ],
-        "tags": ["Study Events"],
+        "tags": ["Study Subjects"],
         "responses": {
           "200": {
             "description": "Returns a specific study subject",
@@ -342,7 +346,7 @@
             }
           }
         },
-        "tags": ["Study Events"],
+        "tags": ["Study Subjects"],
         "responses": {
           "200": {
             "description": "Updated study subject",
