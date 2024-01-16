@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2152,7 +2152,9 @@
           "id",
           "subject_number",
           "current_study_event",
-          "created_at"
+          "created_at",
+          "created_by",
+          "creator"
         ],
         "additionalProperties": false
       },
@@ -2178,7 +2180,8 @@
             "nullable": true
           },
           "completed_by": {
-            "$ref": "#/components/schemas/User"
+            "$ref": "#/components/schemas/User",
+            "nullable": true
           },
           "display_name": {
             "type": "string",
@@ -2200,13 +2203,18 @@
             "items": {
               "$ref": "#/components/schemas/Role"
             }
-          },
-          "task_type": {
-            "type": "string",
-            "description": "The task type",
-            "example": "task"
           }
-        }
+        },
+        "required": [
+          "id",
+          "completed_date",
+          "completed_by",
+          "display_name",
+          "locked",
+          "completed",
+          "roles"
+        ],
+        "additionalProperties": false
       },
       "User": {
         "type": "object",
