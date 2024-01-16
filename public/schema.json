@@ -569,14 +569,12 @@
         }
       }
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events": {
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events" : {
       "post": {
         "summary": "Create an unscheduled study event",
         "description": "Create an unscheduled study event",
         "operationId": "createStudyEvent",
-        "tags": [
-          "Study Events"
-        ],
+        "tags": ["Study Events"],
         "security": [
           {
             "userSessionKey": [],
@@ -634,11 +632,7 @@
                   "study_procedure_definition_identifiers": {
                     "type": "array",
                     "description": "The procedures that took place during this unscheduled study event",
-                    "example": [
-                      "SIXWALK",
-                      "PUL",
-                      "NSTAR"
-                    ]
+                    "example": ["SIXWALK","PUL","NSTAR"]
                   }
                 },
                 "required": [
@@ -667,10 +661,7 @@
                       }
                     }
                   },
-                  "required": [
-                    "schedule",
-                    "study_event"
-                  ],
+                  "required": ["schedule", "study_event"],
                   "additionalProperties": false
                 }
               }
@@ -702,9 +693,7 @@
         "summary": "Get a study event",
         "description": "Get a study event",
         "operationId": "getStudyEvent",
-        "tags": [
-          "Study Events"
-        ],
+        "tags": ["Study Events"],
         "security": [
           {
             "userSessionKey": [],
@@ -789,9 +778,7 @@
         "summary": "Update a study event",
         "description": "Update a study event",
         "operationId": "updateStudyEvent",
-        "tags": [
-          "Study Events"
-        ],
+        "tags": ["Study Events"],
         "security": [
           {
             "userSessionKey": [],
@@ -883,10 +870,7 @@
                       }
                     }
                   },
-                  "required": [
-                    "schedule",
-                    "study_event"
-                  ],
+                  "required": ["schedule", "study_event"],
                   "additionalProperties": false
                 }
               }
@@ -918,9 +902,7 @@
         "summary": "Get all study procedures for a study event",
         "description": "Get all study procedures for a study event",
         "operationId": "getStudyProcedures",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -1009,9 +991,7 @@
         "summary": "Get a study procedure",
         "description": "Get a study procedure",
         "operationId": "getStudyProcedure",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -1109,9 +1089,7 @@
             "chillipharmSession": []
           }
         ],
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "operationId": "updateStudyProcedure",
         "description": "Update a study procedure",
         "parameters": [
@@ -1228,10 +1206,7 @@
                       "$ref": "#/components/schemas/StudyProcedure"
                     }
                   },
-                  "required": [
-                    "schedule",
-                    "study_procedure"
-                  ],
+                  "required": ["schedule", "study_procedure"],
                   "additionalProperties": false
                 }
               }
@@ -1263,9 +1238,7 @@
         "summary": "Get all tasks for a study procedure",
         "description": "Get all tasks for a study procedure",
         "operationId": "getStudyProcedureTasks",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -1374,9 +1347,7 @@
         "summary": "Updating a study procedure task",
         "description": "Endpoint for updating study procedure tasks",
         "operationId": "putStudyProcedureTasks",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -1516,9 +1487,7 @@
         "summary": "Get all update records for a study procedure",
         "description": "Get all update records for a study procedure",
         "operationId": "getStudyProcedureUpdates",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -1615,9 +1584,7 @@
         "summary": "Create a study procedure update record",
         "description": "Create a study procedure update record",
         "operationId": "postStudyProcedureUpdate",
-        "tags": [
-          "Study Procedures"
-        ],
+        "tags": ["Study Procedures"],
         "security": [
           {
             "userSessionKey": [],
@@ -2185,7 +2152,9 @@
           "id",
           "subject_number",
           "current_study_event",
-          "created_at"
+          "created_at",
+          "created_by",
+          "creator"
         ],
         "additionalProperties": false
       },
@@ -2211,7 +2180,8 @@
             "nullable": true
           },
           "completed_by": {
-            "$ref": "#/components/schemas/User"
+            "$ref": "#/components/schemas/User",
+            "nullable": true
           },
           "display_name": {
             "type": "string",
@@ -2233,13 +2203,18 @@
             "items": {
               "$ref": "#/components/schemas/Role"
             }
-          },
-          "task_type": {
-            "type": "string",
-            "description": "The task type",
-            "example": "task"
           }
-        }
+        },
+        "required": [
+          "id",
+          "completed_date",
+          "completed_by",
+          "display_name",
+          "locked",
+          "completed",
+          "roles"
+        ],
+        "additionalProperties": false
       },
       "User": {
         "type": "object",
@@ -2272,13 +2247,7 @@
             "example": "123e4567-e89b-12d3-a456-426655440000"
           }
         },
-        "required": [
-          "id",
-          "email",
-          "first_name",
-          "last_name",
-          "uuid"
-        ],
+        "required": ["id", "email", "first_name", "last_name", "uuid"],
         "additionalProperties": false,
         "nullable": true
       }
