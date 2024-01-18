@@ -1956,6 +1956,11 @@
               "$ref": "#/components/schemas/RoleDefinitionWithContributors"
             }
           },
+          "locked": {
+            "type": "boolean",
+            "description": "where the study procedure is locked",
+            "example": false
+          },
           "status": {
             "type": "string",
             "description": "The status of the procedure",

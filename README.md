@@ -125,12 +125,6 @@ The **`pre-commit`** file validates changes before committing. It checks:
 - If the versions in **`package.json`** and **`/public/schema.json`** match.
 - Linting in the **`/public/schema.json`** file.
 
-## **Linting**
-
-You can run **`npm run verify`** to check the contents of **`/public/schema.json`** for correctness.
-
-*Note: This check is automatically performed before each commit.*
-
 ## **File Contents**
 
 1. **`.eslintrc.cjs`**: This file contains ESLint configuration settings for your project, which helps enforce code quality and style.
