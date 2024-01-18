@@ -2256,7 +2256,8 @@
                   "example": "You do not have sufficient permission to perform this action",
                   "enum": [
                     "You do not have sufficient permission to perform this action",
-                    "Forbidden"
+                    "Forbidden",
+                    "Study Procedure is locked, therefore you cannot perform this action"
                   ]
                 }
               }
