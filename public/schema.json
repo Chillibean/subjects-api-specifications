@@ -1913,7 +1913,8 @@
           "id": {
             "type": "number",
             "description": "The event id",
-            "example": 1
+            "example": 1,
+            "nullable": true
           },
           "date": {
             "type": "string",
