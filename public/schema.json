@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.3.2",
+    "version": "1.3.3",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2050,6 +2050,7 @@
           "date",
           "protocol",
           "role_definitions",
+          "locked",
           "status"
         ],
         "additionalProperties": false
