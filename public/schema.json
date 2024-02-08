@@ -2050,6 +2050,7 @@
           "date",
           "protocol",
           "role_definitions",
+          "locked",
           "status"
         ],
         "additionalProperties": false
