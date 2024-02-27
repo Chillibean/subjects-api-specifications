@@ -1796,8 +1796,8 @@
             "type": "string",
             "example": "123e4567-e89b-12d3-a456-426655440000"
           },
-          "user_role_changed": {
-            "description": "The user_role_changed of the contributor",
+          "role_changed": {
+            "description": "The role_changed of the contributor",
             "type": "boolean",
             "example": false
           }
