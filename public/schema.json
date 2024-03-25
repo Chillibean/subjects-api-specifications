@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.3.5",
+    "version": "1.3.6",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -1823,8 +1823,12 @@
             "description": "The error fields",
             "type": "object",
             "example": {
-              "name": ["can't be blank"],
-              "color": ["can't be blank"]
+              "name": [
+                "can't be blank"
+              ],
+              "color": [
+                "can't be blank"
+              ]
             }
           }
         }
