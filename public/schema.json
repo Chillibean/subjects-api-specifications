@@ -1825,9 +1825,6 @@
             "example": {
               "name": [
                 "can't be blank"
-              ],
-              "color": [
-                "can't be blank"
               ]
             }
           }
