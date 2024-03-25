@@ -1818,6 +1818,14 @@
             "type": "string",
             "description": "The error message",
             "example": "Bad request. Missing or invalid input parameters."
+          },
+          "fields": {
+            "description": "The error fields",
+            "type": "object",
+            "example": {
+              "name": ["can't be blank"],
+              "color": ["can't be blank"]
+            }
           }
         }
       },
