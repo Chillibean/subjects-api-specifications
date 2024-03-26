@@ -231,7 +231,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -315,9 +315,9 @@
             }
           },
           {
-            "name": "subject_identifier",
+            "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -435,7 +435,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -516,7 +516,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -595,7 +595,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -712,7 +712,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -797,7 +797,7 @@
           {
             "name": "subject_number",
             "in": "path",
-            "description": "The subject identifier",
+            "description": "The subject number",
             "required": true,
             "schema": {
               "type": "string",
@@ -2301,6 +2301,21 @@
             "type": "string",
             "description": "The error message",
             "example": "Bad request. Missing or invalid input parameters."
+          },
+          "fields": {
+            "type": "object",
+            "description": "The error fields",
+            "properties": {
+              "^.*$": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": {
+                  "name": ["can't be blank"]
+                }
+              }
+            }
           }
         }
       },
