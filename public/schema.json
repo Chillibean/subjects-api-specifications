@@ -2285,12 +2285,14 @@
               "small": {
                 "type": "string",
                 "description": "The asset small thumbnail",
-                "example": "https://cp-dev-test.com"
+                "example": "https://cp-dev-test.com",
+                "nullable": true
               },
               "large": {
                 "type": "string",
                 "description": "The asset large thumbnail",
-                "example": "https://cp-dev-test.com"
+                "example": "https://cp-dev-test.com",
+                "nullable": true
               }
             }
           },
@@ -2314,7 +2316,23 @@
             "description": "The asset position",
             "example": 16
           }
-        }
+        },
+        "required": [
+          "id",
+          "title",
+          "filename",
+          "created_at",
+          "extension",
+          "created_by",
+          "media_type",
+          "media",
+          "thumbnails",
+          "study_procedure_identifier",
+          "study_event_identifier",
+          "subject_number",
+          "position"
+        ],
+        "additionalProperties": false
       },
       "Contributor": {
         "description": "A role contributor",
