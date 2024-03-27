@@ -2246,6 +2246,11 @@
             "description": "The asset title",
             "example": "Screenshot 2024-03-15 at 12.28.21.png"
           },
+          "document_type": {
+            "type": "string",
+            "description": "The asset document type",
+            "example": "image"
+          },
           "filename": {
             "type": "string",
             "description": "The asset filename",
@@ -2330,7 +2335,8 @@
           "study_procedure_identifier",
           "study_event_identifier",
           "subject_number",
-          "position"
+          "position",
+          "document_type"
         ],
         "additionalProperties": false
       },
