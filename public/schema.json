@@ -2300,7 +2300,8 @@
           "document_type": {
             "type": "string",
             "description": "The asset document type",
-            "example": "image"
+            "example": "image",
+            "nullable": true
           },
           "filename": {
             "type": "string",
