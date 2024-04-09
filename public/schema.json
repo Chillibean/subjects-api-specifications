@@ -2548,6 +2548,7 @@
         },
         "required": [
           "id",
+          "notify",
           "required",
           "role"
         ],
@@ -2561,6 +2562,11 @@
             "description": "The role definition id",
             "type": "number",
             "example": 1
+          },
+          "notify": {
+            "description": "Whether the role definition should be",
+            "type": "boolean",
+            "example": true
           },
           "required": {
             "description": "Whether the role definition is required",
@@ -2578,12 +2584,7 @@
             "$ref": "#/components/schemas/Role"
           }
         },
-        "required": [
-          "id",
-          "required",
-          "contributors",
-          "role"
-        ],
+        "required": ["id", "notify", "required", "contributors", "role"],
         "additionalProperties": false
       },
       "StudyEvent": {
