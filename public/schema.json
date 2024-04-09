@@ -1879,6 +1879,11 @@
             "type": "number",
             "example": 1
           },
+          "notify": {
+            "description": "Whether the role definition should be",
+            "type": "boolean",
+            "example": true
+          },
           "required": {
             "description": "Whether the role definition is required",
             "type": "boolean",
