@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.4.2",
+    "version": "1.5.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2584,7 +2584,13 @@
             "$ref": "#/components/schemas/Role"
           }
         },
-        "required": ["id", "notify", "required", "contributors", "role"],
+        "required": [
+          "id",
+          "notify",
+          "required",
+          "contributors",
+          "role"
+        ],
         "additionalProperties": false
       },
       "StudyEvent": {
