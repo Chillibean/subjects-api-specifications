@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.4.2",
+    "version": "1.4.3",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2379,6 +2379,11 @@
             "type": "number",
             "description": "The asset position",
             "example": 16
+          },
+          "processed": {
+            "type": "boolean",
+            "description": "The asset processed",
+            "example": true
           }
         },
         "required": [
@@ -2394,7 +2399,8 @@
           "study_procedure_identifier",
           "study_event_identifier",
           "subject_number",
-          "position"
+          "position",
+          "processed"
         ],
         "additionalProperties": false
       },
