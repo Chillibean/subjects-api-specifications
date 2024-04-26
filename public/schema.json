@@ -2547,6 +2547,36 @@
               "requires_attention",
               "not_required"
             ]
+          },
+          "required_form_id": {
+            "type": "array",
+            "description": "The required form ids",
+            "items": {
+              "type": "number"
+            }
+          },
+          "required_form_templates": {
+            "type": "array",
+            "description": "The required form templates",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Form 1"
+                },
+                "version_number": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": ["id", "title", "version_number"],
+              "additionalProperties": false
+            }
           }
         },
         "required": [
@@ -2557,7 +2587,9 @@
           "protocol",
           "role_definitions",
           "locked",
-          "status"
+          "status",
+          "required_form_id",
+          "required_form_templates"
         ],
         "additionalProperties": false
       },
