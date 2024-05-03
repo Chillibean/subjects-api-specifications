@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -73,7 +73,9 @@
             }
           }
         ],
-        "tags": ["Study Subjects"],
+        "tags": [
+          "Study Subjects"
+        ],
         "responses": {
           "200": {
             "description": "List of Subjects is returned",
@@ -160,7 +162,9 @@
             }
           }
         },
-        "tags": ["Study Subjects"],
+        "tags": [
+          "Study Subjects"
+        ],
         "responses": {
           "200": {
             "description": "Created a study subject",
@@ -198,7 +202,9 @@
         "summary": "Get a specific study subject for a site",
         "description": "Get a specific study subject for a site",
         "operationId": "getSubject",
-        "tags": ["Study Subjects"],
+        "tags": [
+          "Study Subjects"
+        ],
         "security": [
           {
             "userSessionKey": []
@@ -284,7 +290,9 @@
         "summary": "Update a study subject for a site",
         "description": "Update a study subject for a site",
         "operationId": "updateSubject",
-        "tags": ["Study Subjects"],
+        "tags": [
+          "Study Subjects"
+        ],
         "security": [
           {
             "userSessionKey": []
@@ -349,7 +357,9 @@
                     "nullable": true
                   }
                 },
-                "required": ["authenticity_token"],
+                "required": [
+                  "authenticity_token"
+                ],
                 "additionalProperties": false
               }
             }
@@ -402,7 +412,9 @@
         "summary": "Get all scheduled study events for a study subject",
         "description": "Get all scheduled study events for a study subject",
         "operationId": "getSubjectScheduledStudyEvents",
-        "tags": ["Study Events"],
+        "tags": [
+          "Study Events"
+        ],
         "security": [
           {
             "userSessionKey": []
@@ -483,7 +495,9 @@
         "summary": "Get all unscheduled study events for a study subject",
         "description": "Get all unscheduled study events for a study subject",
         "operationId": "getSubjectUnscheduledStudyEvents",
-        "tags": ["Study Events"],
+        "tags": [
+          "Study Events"
+        ],
         "security": [
           {
             "userSessionKey": []
@@ -564,7 +578,9 @@
         "summary": "Create an unscheduled study event",
         "description": "Create an unscheduled study event",
         "operationId": "createStudyEvent",
-        "tags": ["Study Events"],
+        "tags": [
+          "Study Events"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -622,10 +638,16 @@
                   "study_procedure_definition_identifiers": {
                     "type": "array",
                     "description": "The procedures that took place during this unscheduled study event",
-                    "example": ["SIXWALK", "PUL", "NSTAR"]
+                    "example": [
+                      "SIXWALK",
+                      "PUL",
+                      "NSTAR"
+                    ]
                   }
                 },
-                "required": ["authenticity_token"],
+                "required": [
+                  "authenticity_token"
+                ],
                 "additionalProperties": false
               }
             }
@@ -649,7 +671,10 @@
                       }
                     }
                   },
-                  "required": ["schedule", "study_event"],
+                  "required": [
+                    "schedule",
+                    "study_event"
+                  ],
                   "additionalProperties": false
                 }
               }
@@ -681,7 +706,9 @@
         "summary": "Get a study event",
         "description": "Get a study event",
         "operationId": "getStudyEvent",
-        "tags": ["Study Events"],
+        "tags": [
+          "Study Events"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -766,7 +793,9 @@
         "summary": "Update a study event",
         "description": "Update a study event",
         "operationId": "updateStudyEvent",
-        "tags": ["Study Events"],
+        "tags": [
+          "Study Events"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -832,7 +861,9 @@
                     "example": "2024-01-03"
                   }
                 },
-                "required": ["authenticity_token"],
+                "required": [
+                  "authenticity_token"
+                ],
                 "additionalProperties": false
               }
             }
@@ -856,7 +887,10 @@
                       }
                     }
                   },
-                  "required": ["schedule", "study_event"],
+                  "required": [
+                    "schedule",
+                    "study_event"
+                  ],
                   "additionalProperties": false
                 }
               }
@@ -888,7 +922,9 @@
         "summary": "Get all study procedures for a study event",
         "description": "Get all study procedures for a study event",
         "operationId": "getStudyProcedures",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -977,7 +1013,9 @@
         "summary": "Get a study procedure",
         "description": "Get a study procedure",
         "operationId": "getStudyProcedure",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1075,7 +1113,9 @@
             "chillipharmSession": []
           }
         ],
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "operationId": "updateStudyProcedure",
         "description": "Update a study procedure",
         "parameters": [
@@ -1184,7 +1224,10 @@
                       "$ref": "#/components/schemas/StudyProcedure"
                     }
                   },
-                  "required": ["schedule", "study_procedure"],
+                  "required": [
+                    "schedule",
+                    "study_procedure"
+                  ],
                   "additionalProperties": false
                 }
               }
@@ -1216,7 +1259,9 @@
         "summary": "Get all tasks for a study procedure",
         "description": "Get all tasks for a study procedure",
         "operationId": "getStudyProcedureTasks",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1325,7 +1370,9 @@
         "summary": "Updating a study procedure task",
         "description": "Endpoint for updating study procedure tasks",
         "operationId": "putStudyProcedureTasks",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1465,7 +1512,9 @@
         "summary": "Get all update records for a study procedure",
         "description": "Get all update records for a study procedure",
         "operationId": "getStudyProcedureUpdates",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1562,7 +1611,9 @@
         "summary": "Create a study procedure update record",
         "description": "Create a study procedure update record",
         "operationId": "postStudyProcedureUpdate",
-        "tags": ["Study Procedures"],
+        "tags": [
+          "Study Procedures"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1679,7 +1730,9 @@
         "summary": "Start a multipart upload",
         "description": "Start a multipart upload",
         "operationId": "postStartMultipart",
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1808,7 +1861,9 @@
         "summary": "Upload a part of a multipart upload",
         "description": "Upload a part of a multipart upload",
         "operationId": "postUploadPart",
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -1943,7 +1998,9 @@
         "summary": "Complete a multipart upload",
         "description": "Complete a multipart upload",
         "operationId": "postCompleteMultipart",
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -2088,7 +2145,9 @@
         "summary": "Abort a multipart upload",
         "description": "Abort a multipart upload",
         "operationId": "deleteAbortMultipart",
-        "tags": ["Uploads"],
+        "tags": [
+          "Uploads"
+        ],
         "security": [
           {
             "userSessionKey": [],
@@ -2350,7 +2409,9 @@
                   "type": "string"
                 },
                 "example": {
-                  "name": ["can't be blank"]
+                  "name": [
+                    "can't be blank"
+                  ]
                 }
               }
             }
@@ -2407,7 +2468,12 @@
             "$ref": "#/components/schemas/Role"
           }
         },
-        "required": ["id", "notify", "required", "role"],
+        "required": [
+          "id",
+          "notify",
+          "required",
+          "role"
+        ],
         "additionalProperties": false
       },
       "StudyEvent": {
@@ -2474,7 +2540,10 @@
             "type": "string",
             "description": "The study event type of the event",
             "example": "scheduled",
-            "enum": ["scheduled", "unscheduled"]
+            "enum": [
+              "scheduled",
+              "unscheduled"
+            ]
           }
         },
         "required": [
@@ -2569,7 +2638,11 @@
                   "example": 1
                 }
               },
-              "required": ["id", "title", "version_number"],
+              "required": [
+                "id",
+                "title",
+                "version_number"
+              ],
               "additionalProperties": false
             }
           }
@@ -2820,7 +2893,13 @@
             "example": "123e4567-e89b-12d3-a456-426655440000"
           }
         },
-        "required": ["id", "email", "first_name", "last_name", "uuid"],
+        "required": [
+          "id",
+          "email",
+          "first_name",
+          "last_name",
+          "uuid"
+        ],
         "additionalProperties": false,
         "nullable": true
       }
@@ -2890,10 +2969,14 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Not found",
-                  "enum": ["Not found"]
+                  "enum": [
+                    "Not found"
+                  ]
                 }
               },
-              "required": ["error"],
+              "required": [
+                "error"
+              ],
               "additionalProperties": false
             }
           }
