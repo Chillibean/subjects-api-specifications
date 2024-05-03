@@ -1144,6 +1144,12 @@
                     "example": "2023-12-21",
                     "nullable": true
                   },
+                  "evaluator_id": {
+                    "type": "integer",
+                    "description": "The study procedure evaluator id",
+                    "example": 1,
+                    "nullable": true
+                  },
                   "status": {
                     "type": "string",
                     "description": "The study procedure status",
