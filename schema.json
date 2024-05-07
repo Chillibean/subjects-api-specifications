@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.5.1",
+    "version": "1.6.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2409,16 +2409,11 @@
             "type": "boolean",
             "example": true
           },
-          "required": {
-            "description": "Whether the role definition is required",
-            "type": "boolean",
-            "example": true
-          },
           "role": {
             "$ref": "#/components/schemas/Role"
           }
         },
-        "required": ["id", "notify", "required", "role"],
+        "required": ["id", "notify", "role"],
         "additionalProperties": false
       },
       "StudyEvent": {
