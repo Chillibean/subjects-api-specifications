@@ -1144,6 +1144,12 @@
                     "example": "2023-12-21",
                     "nullable": true
                   },
+                  "evaluator_id": {
+                    "type": "integer",
+                    "description": "The study procedure evaluator id",
+                    "example": 1,
+                    "nullable": true
+                  },
                   "status": {
                     "type": "string",
                     "description": "The study procedure status",
@@ -2511,6 +2517,12 @@
             "description": "The display name of the procedure",
             "example": "North Star"
           },
+          "evaluator_id": {
+            "type": "number",
+            "description": "The evaluator id",
+            "example": 1,
+            "nullable": true
+          },
           "identifier": {
             "type": "string",
             "description": "The identifier of the procedure",
@@ -2579,6 +2591,7 @@
           "identifier",
           "display_name",
           "date",
+          "evaluator_id",
           "protocol",
           "role_definitions",
           "locked",
