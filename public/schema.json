@@ -2409,16 +2409,11 @@
             "type": "boolean",
             "example": true
           },
-          "required": {
-            "description": "Whether the role definition is required",
-            "type": "boolean",
-            "example": true
-          },
           "role": {
             "$ref": "#/components/schemas/Role"
           }
         },
-        "required": ["id", "notify", "required", "role"],
+        "required": ["id", "notify", "role"],
         "additionalProperties": false
       },
       "StudyEvent": {
@@ -2444,7 +2439,7 @@
           },
           "identifier": {
             "type": "string",
-            "description": "The identifier of the event",
+          "description": "The identifier of the event",
             "example": "DAY1"
           },
           "position": {
