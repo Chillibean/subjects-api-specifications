@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "admin": {
+      "type": "boolean",
+      "description": "Whether the user is an admin",
+      "example": false
+    },
+    "email": {
+      "type": "string",
+      "description": "The email of the user",
+      "example": "example@gmail.com"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "The first name of the user",
+      "example": "John"
+    },
+    "id": {
+      "type": "integer",
+      "description": "The user id",
+      "example": 1
+    },
+    "last_name": {
+      "type": "string",
+      "description": "The last name of the user",
+      "example": "Doe"
+    },
+    "role": {
+      "$ref": "./Role.json"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "The uuid of the user",
+      "example": "123e4567-e89b-12d3-a456-426655440000"
+    }
+  }
+}
