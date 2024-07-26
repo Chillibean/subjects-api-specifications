@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.0.0",
+    "version": "1.8.5",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -9,6 +9,16 @@
       "url": "https://www.chillipharm.com"
     }
   },
+  "servers": [
+    {
+      "url": "http://chillipharm.test:3000/api/v1",
+      "description": "Local development"
+    },
+    {
+      "url": "https://www.chillipharm.com/api/v1",
+      "description": "Production"
+    }
+  ],
   "tags": [
     {
       "name": "Study Events",
@@ -25,16 +35,6 @@
     {
       "name": "Uploads",
       "description": "Endpoints for uploading study procedure assets"
-    }
-  ],
-  "servers": [
-    {
-      "url": "http://chillipharm.test:3000/api/v1",
-      "description": "Local development"
-    },
-    {
-      "url": "https://www.chillipharm.com/api/v1",
-      "description": "Production"
     }
   ],
   "paths": {
@@ -2390,118 +2390,109 @@
       }
     },
     "schemas": {
-      "Asset": {
-        "description": "An asset",
+      "User": {
         "type": "object",
+        "description": "A User",
         "properties": {
           "id": {
-            "type": "number",
-            "description": "The asset id",
+            "type": "integer",
+            "description": "The user id",
             "example": 1
           },
-          "title": {
+          "email": {
             "type": "string",
-            "description": "The asset title",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "description": "The email of the user",
+            "example": "test@user.com",
+            "format": "email"
           },
-          "document_type": {
+          "first_name": {
             "type": "string",
-            "description": "The asset document type",
-            "example": "image"
+            "description": "The first name of the user",
+            "example": "John"
           },
-          "filename": {
+          "last_name": {
             "type": "string",
-            "description": "The asset filename",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "description": "The last name of the user",
+            "example": "Doe"
           },
-          "created_at": {
+          "uuid": {
             "type": "string",
-            "description": "The asset created at",
-            "example": "2024-03-27T15:46:56.845Z"
-          },
-          "extension": {
-            "type": "string",
-            "description": "The asset extension",
-            "example": "png"
-          },
-          "created_by": {
-            "$ref": "#/components/schemas/User"
-          },
-          "media_type": {
-            "type": "string",
-            "description": "The asset media type",
-            "example": "image"
-          },
-          "media": {
-            "type": "object",
-            "properties": {
-              "url": {
-                "type": "string",
-                "description": "The asset media url",
-                "example": "https://cp-dev-test.com"
-              }
-            }
-          },
-          "thumbnails": {
-            "type": "object",
-            "properties": {
-              "small": {
-                "type": "string",
-                "description": "The asset small thumbnail",
-                "example": "https://cp-dev-test.com",
-                "nullable": true
-              },
-              "large": {
-                "type": "string",
-                "description": "The asset large thumbnail",
-                "example": "https://cp-dev-test.com",
-                "nullable": true
-              }
-            }
-          },
-          "study_procedure_identifier": {
-            "type": "string",
-            "description": "The asset study procedure identifier",
-            "example": "NSTAR"
-          },
-          "study_event_identifier": {
-            "type": "string",
-            "description": "The asset study event identifier",
-            "example": "DAY1"
-          },
-          "subject_number": {
-            "type": "string",
-            "description": "The asset subject number",
-            "example": "E0001003"
-          },
-          "position": {
-            "type": "number",
-            "description": "The asset position",
-            "example": 16
-          },
-          "processed": {
-            "type": "boolean",
-            "description": "The asset processed",
-            "example": true
+            "description": "The uuid of the user",
+            "example": "123e4567-e89b-12d3-a456-426655440000"
           }
         },
         "required": [
           "id",
-          "title",
-          "filename",
-          "created_at",
-          "extension",
-          "created_by",
-          "media_type",
-          "media",
-          "thumbnails",
-          "study_procedure_identifier",
-          "study_event_identifier",
+          "email",
+          "first_name",
+          "last_name",
+          "uuid"
+        ],
+        "additionalProperties": false,
+        "nullable": true
+      },
+      "StudySubject": {
+        "description": "A subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The subject id",
+            "example": 1
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The serial number of the subject",
+            "example": "E001004"
+          },
+          "current_study_event": {
+            "type": "string",
+            "description": "The study event the subject is currently in",
+            "example": "DAY1",
+            "nullable": true
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm the subject is currently in",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "cohort": {
+            "type": "string",
+            "description": "The study cohort of the subject",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Date time for when the subject was created",
+            "example": "2024-01-02T11:06:48.566Z"
+          },
+          "created_by": {
+            "description": "full name of subject creator",
+            "type": "string",
+            "example": "John Doe"
+          },
+          "creator": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "id",
           "subject_number",
-          "position",
-          "processed"
+          "current_study_event",
+          "created_at",
+          "created_by",
+          "creator"
         ],
         "additionalProperties": false
+      },
+      "StudySubjects": {
+        "description": "A list of subjects",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StudySubject"
+        }
       },
       "Error": {
         "description": "An error",
@@ -2588,86 +2579,52 @@
         ],
         "additionalProperties": false
       },
-      "StudyEvent": {
-        "description": "A scheduled event for a subject",
+      "StudyProtocol": {
+        "description": "Protocol for a procedure/event",
         "type": "object",
         "properties": {
           "id": {
+            "description": "The protocol id",
             "type": "number",
-            "description": "The event id",
-            "example": 1,
-            "nullable": true
+            "example": 1
           },
-          "date": {
+          "locked": {
+            "description": "locked status of the protocol",
+            "type": "boolean",
+            "example": false
+          },
+          "name": {
+            "description": "The name of the protocol",
             "type": "string",
-            "description": "The date of the event",
-            "example": "2024-01-02",
-            "nullable": true
+            "example": "Ghost Protocol"
           },
-          "display_name": {
-            "type": "string",
-            "description": "The display name of the event",
-            "example": "Day 1"
+          "study_event_display_name": {
+            "$ref": "#/components/schemas/PluralDisplay"
           },
-          "identifier": {
-            "type": "string",
-            "description": "The identifier of the event",
-            "example": "DAY1"
+          "study_procedure_display_name": {
+            "$ref": "#/components/schemas/PluralDisplay"
           },
-          "position": {
-            "type": "number",
-            "description": "The position of the event",
-            "example": 1,
-            "nullable": true
-          },
-          "procedures": {
+          "study_procedure_role_definitions": {
+            "description": "The role definitions of the study procedure",
             "type": "array",
-            "description": "The procedures for the event",
             "items": {
-              "$ref": "#/components/schemas/StudyProcedure"
+              "$ref": "#/components/schemas/RoleDefinition"
             }
           },
-          "protocol": {
-            "$ref": "#/components/schemas/StudyProtocol"
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the event",
-            "example": "complete",
-            "enum": [
-              "not_started",
-              "in_progress",
-              "complete",
-              "requires_attention",
-              "not_required"
-            ]
-          },
-          "study_arm": {
-            "type": "string",
-            "description": "The study arm of the event",
-            "example": "Arm 1",
-            "nullable": true
-          },
-          "study_event_type": {
-            "type": "string",
-            "description": "The study event type of the event",
-            "example": "scheduled",
-            "enum": [
-              "scheduled",
-              "unscheduled"
-            ]
+          "version_number": {
+            "description": "The version number of the protocol",
+            "type": "number",
+            "example": 1
           }
         },
         "required": [
-          "identifier",
-          "display_name",
-          "date",
-          "status",
-          "procedures",
-          "study_arm",
-          "protocol",
-          "study_event_type",
-          "position"
+          "id",
+          "name",
+          "study_event_display_name",
+          "study_procedure_display_name",
+          "locked",
+          "version_number",
+          "study_procedure_role_definitions"
         ],
         "additionalProperties": false
       },
@@ -2780,155 +2737,88 @@
         ],
         "additionalProperties": false
       },
-      "StudyProcedureUpdate": {
+      "StudyEvent": {
+        "description": "A scheduled event for a subject",
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "The update id",
-            "example": "33437756-043f-4ed6-9a83-e692244fe301"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The update created date",
-            "example": "2024-01-02T10:52:05.000Z"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "action": {
-            "type": "string",
-            "description": "The update action",
-            "example": "posted_update"
-          },
-          "action_text": {
-            "type": "string",
-            "description": "The update action text",
-            "example": "posted an update"
-          },
-          "update_type": {
-            "type": "string",
-            "description": "The update type",
-            "example": "user_comment"
-          },
-          "update_message": {
-            "type": "string",
-            "description": "The update message",
-            "example": "update"
-          }
-        }
-      },
-      "StudyProtocol": {
-        "description": "Protocol for a procedure/event",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The protocol id",
             "type": "number",
-            "example": 1
+            "description": "The event id",
+            "example": 1,
+            "nullable": true
           },
-          "locked": {
-            "description": "locked status of the protocol",
-            "type": "boolean",
-            "example": false
-          },
-          "name": {
-            "description": "The name of the protocol",
+          "date": {
             "type": "string",
-            "example": "Ghost Protocol"
+            "description": "The date of the event",
+            "example": "2024-01-02",
+            "nullable": true
           },
-          "study_event_display_name": {
-            "$ref": "#/components/schemas/PluralDisplay"
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the event",
+            "example": "Day 1"
           },
-          "study_procedure_display_name": {
-            "$ref": "#/components/schemas/PluralDisplay"
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the event",
+            "example": "DAY1"
           },
-          "study_procedure_role_definitions": {
-            "description": "The role definitions of the study procedure",
+          "position": {
+            "type": "number",
+            "description": "The position of the event",
+            "example": 1,
+            "nullable": true
+          },
+          "procedures": {
             "type": "array",
+            "description": "The procedures for the event",
             "items": {
-              "$ref": "#/components/schemas/RoleDefinition"
+              "$ref": "#/components/schemas/StudyProcedure"
             }
           },
-          "version_number": {
-            "description": "The version number of the protocol",
-            "type": "number",
-            "example": 1
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "study_event_display_name",
-          "study_procedure_display_name",
-          "locked",
-          "version_number",
-          "study_procedure_role_definitions"
-        ],
-        "additionalProperties": false
-      },
-      "StudySubject": {
-        "description": "A subject",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The subject id",
-            "example": 1
+          "protocol": {
+            "$ref": "#/components/schemas/StudyProtocol"
           },
-          "subject_number": {
+          "status": {
             "type": "string",
-            "description": "The serial number of the subject",
-            "example": "E001004"
-          },
-          "current_study_event": {
-            "type": "string",
-            "description": "The study event the subject is currently in",
-            "example": "DAY1",
-            "nullable": true
+            "description": "The status of the event",
+            "example": "complete",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "complete",
+              "requires_attention",
+              "not_required"
+            ]
           },
           "study_arm": {
             "type": "string",
-            "description": "The study arm the subject is currently in",
+            "description": "The study arm of the event",
             "example": "Arm 1",
             "nullable": true
           },
-          "cohort": {
+          "study_event_type": {
             "type": "string",
-            "description": "The study cohort of the subject",
-            "example": "Arm 1",
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Date time for when the subject was created",
-            "example": "2024-01-02T11:06:48.566Z"
-          },
-          "created_by": {
-            "description": "full name of subject creator",
-            "type": "string",
-            "example": "John Doe"
-          },
-          "creator": {
-            "$ref": "#/components/schemas/User"
+            "description": "The study event type of the event",
+            "example": "scheduled",
+            "enum": [
+              "scheduled",
+              "unscheduled"
+            ]
           }
         },
         "required": [
-          "id",
-          "subject_number",
-          "current_study_event",
-          "created_at",
-          "created_by",
-          "creator"
+          "identifier",
+          "display_name",
+          "date",
+          "status",
+          "procedures",
+          "study_arm",
+          "protocol",
+          "study_event_type",
+          "position"
         ],
         "additionalProperties": false
-      },
-      "StudySubjects": {
-        "description": "A list of subjects",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/StudySubject"
-        }
       },
       "Task": {
         "type": "object",
@@ -2981,46 +2871,43 @@
         ],
         "additionalProperties": false
       },
-      "User": {
+      "StudyProcedureUpdate": {
         "type": "object",
-        "description": "A User",
         "properties": {
           "id": {
-            "type": "integer",
-            "description": "The user id",
-            "example": 1
-          },
-          "email": {
             "type": "string",
-            "description": "The email of the user",
-            "example": "test@user.com",
-            "format": "email"
+            "description": "The update id",
+            "example": "33437756-043f-4ed6-9a83-e692244fe301"
           },
-          "first_name": {
+          "created_at": {
             "type": "string",
-            "description": "The first name of the user",
-            "example": "John"
+            "description": "The update created date",
+            "example": "2024-01-02T10:52:05.000Z"
           },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the user",
-            "example": "Doe"
+          "user": {
+            "$ref": "#/components/schemas/User"
           },
-          "uuid": {
+          "action": {
             "type": "string",
-            "description": "The uuid of the user",
-            "example": "123e4567-e89b-12d3-a456-426655440000"
+            "description": "The update action",
+            "example": "posted_update"
+          },
+          "action_text": {
+            "type": "string",
+            "description": "The update action text",
+            "example": "posted an update"
+          },
+          "update_type": {
+            "type": "string",
+            "description": "The update type",
+            "example": "user_comment"
+          },
+          "update_message": {
+            "type": "string",
+            "description": "The update message",
+            "example": "update"
           }
-        },
-        "required": [
-          "id",
-          "email",
-          "first_name",
-          "last_name",
-          "uuid"
-        ],
-        "additionalProperties": false,
-        "nullable": true
+        }
       },
       "SiteUser": {
         "type": "object",
@@ -3059,6 +2946,119 @@
             "example": "123e4567-e89b-12d3-a456-426655440000"
           }
         }
+      },
+      "Asset": {
+        "description": "An asset",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The asset id",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "The asset title",
+            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+          },
+          "document_type": {
+            "type": "string",
+            "description": "The asset document type",
+            "example": "image"
+          },
+          "filename": {
+            "type": "string",
+            "description": "The asset filename",
+            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The asset created at",
+            "example": "2024-03-27T15:46:56.845Z"
+          },
+          "extension": {
+            "type": "string",
+            "description": "The asset extension",
+            "example": "png"
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/User"
+          },
+          "media_type": {
+            "type": "string",
+            "description": "The asset media type",
+            "example": "image"
+          },
+          "media": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "The asset media url",
+                "example": "https://cp-dev-test.com"
+              }
+            }
+          },
+          "thumbnails": {
+            "type": "object",
+            "properties": {
+              "small": {
+                "type": "string",
+                "description": "The asset small thumbnail",
+                "example": "https://cp-dev-test.com",
+                "nullable": true
+              },
+              "large": {
+                "type": "string",
+                "description": "The asset large thumbnail",
+                "example": "https://cp-dev-test.com",
+                "nullable": true
+              }
+            }
+          },
+          "study_procedure_identifier": {
+            "type": "string",
+            "description": "The asset study procedure identifier",
+            "example": "NSTAR"
+          },
+          "study_event_identifier": {
+            "type": "string",
+            "description": "The asset study event identifier",
+            "example": "DAY1"
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The asset subject number",
+            "example": "E0001003"
+          },
+          "position": {
+            "type": "number",
+            "description": "The asset position",
+            "example": 16
+          },
+          "processed": {
+            "type": "boolean",
+            "description": "The asset processed",
+            "example": true
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "filename",
+          "created_at",
+          "extension",
+          "created_by",
+          "media_type",
+          "media",
+          "thumbnails",
+          "study_procedure_identifier",
+          "study_event_identifier",
+          "subject_number",
+          "position",
+          "processed"
+        ],
+        "additionalProperties": false
       }
     },
     "responses": {
@@ -3072,8 +3072,8 @@
           }
         }
       },
-      "Conflict": {
-        "description": "Conflict. The request could not be completed due to a conflict with the current state of the resource.",
+      "Unauthorized": {
+        "description": "Unauthorized. Missing or invalid authentication credentials.",
         "content": {
           "application/json": {
             "schema": {
@@ -3104,16 +3104,6 @@
           }
         }
       },
-      "InternalServerError": {
-        "description": "Internal server error. Please contact support.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
       "NotFound": {
         "description": "Not found. The requested resource was not found.",
         "content": {
@@ -3139,8 +3129,18 @@
           }
         }
       },
-      "Unauthorized": {
-        "description": "Unauthorized. Missing or invalid authentication credentials.",
+      "Conflict": {
+        "description": "Conflict. The request could not be completed due to a conflict with the current state of the resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error. Please contact support.",
         "content": {
           "application/json": {
             "schema": {
