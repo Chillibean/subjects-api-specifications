@@ -1,0 +1,7 @@
+{
+  "description": "A list of subjects",
+  "type": "array",
+  "items": {
+    "$ref": "./StudySubject.json"
+  }
+}

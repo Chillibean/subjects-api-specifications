@@ -1,0 +1,56 @@
+{
+  "description": "A subject",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The subject id",
+      "example": 1
+    },
+    "subject_number": {
+      "type": "string",
+      "description": "The serial number of the subject",
+      "example": "E001004"
+    },
+    "current_study_event": {
+      "type": "string",
+      "description": "The study event the subject is currently in",
+      "example": "DAY1",
+      "nullable": true
+    },
+    "study_arm": {
+      "type": "string",
+      "description": "The study arm the subject is currently in",
+      "example": "Arm 1",
+      "nullable": true
+    },
+    "cohort": {
+      "type": "string",
+      "description": "The study cohort of the subject",
+      "example": "Arm 1",
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Date time for when the subject was created",
+      "example": "2024-01-02T11:06:48.566Z"
+    },
+    "created_by": {
+      "description": "full name of subject creator",
+      "type": "string",
+      "example": "John Doe"
+    },
+    "creator": {
+      "$ref": "./User.json"
+    }
+  },
+  "required": [
+    "id",
+    "subject_number",
+    "current_study_event",
+    "created_at",
+    "created_by",
+    "creator"
+  ],
+  "additionalProperties": false
+}
