@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.8.5",
+    "version": "2.0.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2390,563 +2390,6 @@
       }
     },
     "schemas": {
-      "User": {
-        "type": "object",
-        "description": "A User",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The user id",
-            "example": 1
-          },
-          "email": {
-            "type": "string",
-            "description": "The email of the user",
-            "example": "test@user.com",
-            "format": "email"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the user",
-            "example": "John"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the user",
-            "example": "Doe"
-          },
-          "uuid": {
-            "type": "string",
-            "description": "The uuid of the user",
-            "example": "123e4567-e89b-12d3-a456-426655440000"
-          }
-        },
-        "required": [
-          "id",
-          "email",
-          "first_name",
-          "last_name",
-          "uuid"
-        ],
-        "additionalProperties": false,
-        "nullable": true
-      },
-      "StudySubject": {
-        "description": "A subject",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The subject id",
-            "example": 1
-          },
-          "subject_number": {
-            "type": "string",
-            "description": "The serial number of the subject",
-            "example": "E001004"
-          },
-          "current_study_event": {
-            "type": "string",
-            "description": "The study event the subject is currently in",
-            "example": "DAY1",
-            "nullable": true
-          },
-          "study_arm": {
-            "type": "string",
-            "description": "The study arm the subject is currently in",
-            "example": "Arm 1",
-            "nullable": true
-          },
-          "cohort": {
-            "type": "string",
-            "description": "The study cohort of the subject",
-            "example": "Arm 1",
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Date time for when the subject was created",
-            "example": "2024-01-02T11:06:48.566Z"
-          },
-          "created_by": {
-            "description": "full name of subject creator",
-            "type": "string",
-            "example": "John Doe"
-          },
-          "creator": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "required": [
-          "id",
-          "subject_number",
-          "current_study_event",
-          "created_at",
-          "created_by",
-          "creator"
-        ],
-        "additionalProperties": false
-      },
-      "StudySubjects": {
-        "description": "A list of subjects",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/StudySubject"
-        }
-      },
-      "Error": {
-        "description": "An error",
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "The error message",
-            "example": "Bad request. Missing or invalid input parameters."
-          },
-          "fields": {
-            "type": "object",
-            "description": "The error fields",
-            "properties": {
-              "^.*$": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "example": {
-                  "name": [
-                    "can't be blank"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "PluralDisplay": {
-        "description": "Pluralised naming conventions",
-        "type": "object",
-        "properties": {
-          "plural": {
-            "description": "The plural name",
-            "type": "string",
-            "example": "visits"
-          },
-          "singular": {
-            "description": "The singular name",
-            "type": "string",
-            "example": "visit"
-          }
-        }
-      },
-      "Role": {
-        "description": "A role",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The role id",
-            "type": "number",
-            "example": 1
-          },
-          "name": {
-            "description": "The name of the role",
-            "type": "string",
-            "example": "Power User"
-          }
-        }
-      },
-      "RoleDefinition": {
-        "description": "A role definition",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The role definition id",
-            "type": "number",
-            "example": 1
-          },
-          "notify": {
-            "description": "Whether the role definition should be",
-            "type": "boolean",
-            "example": true
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          }
-        },
-        "required": [
-          "id",
-          "notify",
-          "role"
-        ],
-        "additionalProperties": false
-      },
-      "StudyProtocol": {
-        "description": "Protocol for a procedure/event",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The protocol id",
-            "type": "number",
-            "example": 1
-          },
-          "locked": {
-            "description": "locked status of the protocol",
-            "type": "boolean",
-            "example": false
-          },
-          "name": {
-            "description": "The name of the protocol",
-            "type": "string",
-            "example": "Ghost Protocol"
-          },
-          "study_event_display_name": {
-            "$ref": "#/components/schemas/PluralDisplay"
-          },
-          "study_procedure_display_name": {
-            "$ref": "#/components/schemas/PluralDisplay"
-          },
-          "study_procedure_role_definitions": {
-            "description": "The role definitions of the study procedure",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RoleDefinition"
-            }
-          },
-          "version_number": {
-            "description": "The version number of the protocol",
-            "type": "number",
-            "example": 1
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "study_event_display_name",
-          "study_procedure_display_name",
-          "locked",
-          "version_number",
-          "study_procedure_role_definitions"
-        ],
-        "additionalProperties": false
-      },
-      "StudyProcedure": {
-        "description": "A procedure for an event",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The procedure id",
-            "example": 1,
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "description": "The date of the procedure",
-            "example": "2024-01-02",
-            "nullable": true
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The display name of the procedure",
-            "example": "North Star"
-          },
-          "evaluator_id": {
-            "type": "number",
-            "description": "The evaluator id",
-            "example": 1,
-            "nullable": true
-          },
-          "identifier": {
-            "type": "string",
-            "description": "The identifier of the procedure",
-            "example": "NSTAR"
-          },
-          "protocol": {
-            "$ref": "#/components/schemas/StudyProtocol"
-          },
-          "role_definitions": {
-            "type": "array",
-            "description": "The role definitions of the procedure",
-            "items": {
-              "$ref": "#/components/schemas/RoleDefinition"
-            }
-          },
-          "locked": {
-            "type": "boolean",
-            "description": "where the study procedure is locked",
-            "example": false
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the procedure",
-            "example": "complete",
-            "enum": [
-              "not_started",
-              "in_progress",
-              "complete",
-              "requires_attention",
-              "not_required"
-            ]
-          },
-          "required_form_id": {
-            "type": "array",
-            "description": "The required form ids",
-            "items": {
-              "type": "number"
-            }
-          },
-          "required_form_templates": {
-            "type": "array",
-            "description": "The required form templates",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number",
-                  "example": 1
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Form 1"
-                },
-                "version_number": {
-                  "type": "number",
-                  "example": 1
-                }
-              },
-              "required": [
-                "id",
-                "title",
-                "version_number"
-              ],
-              "additionalProperties": false
-            }
-          }
-        },
-        "required": [
-          "id",
-          "identifier",
-          "display_name",
-          "date",
-          "evaluator_id",
-          "protocol",
-          "role_definitions",
-          "locked",
-          "status",
-          "required_form_id",
-          "required_form_templates"
-        ],
-        "additionalProperties": false
-      },
-      "StudyEvent": {
-        "description": "A scheduled event for a subject",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The event id",
-            "example": 1,
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "description": "The date of the event",
-            "example": "2024-01-02",
-            "nullable": true
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The display name of the event",
-            "example": "Day 1"
-          },
-          "identifier": {
-            "type": "string",
-            "description": "The identifier of the event",
-            "example": "DAY1"
-          },
-          "position": {
-            "type": "number",
-            "description": "The position of the event",
-            "example": 1,
-            "nullable": true
-          },
-          "procedures": {
-            "type": "array",
-            "description": "The procedures for the event",
-            "items": {
-              "$ref": "#/components/schemas/StudyProcedure"
-            }
-          },
-          "protocol": {
-            "$ref": "#/components/schemas/StudyProtocol"
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the event",
-            "example": "complete",
-            "enum": [
-              "not_started",
-              "in_progress",
-              "complete",
-              "requires_attention",
-              "not_required"
-            ]
-          },
-          "study_arm": {
-            "type": "string",
-            "description": "The study arm of the event",
-            "example": "Arm 1",
-            "nullable": true
-          },
-          "study_event_type": {
-            "type": "string",
-            "description": "The study event type of the event",
-            "example": "scheduled",
-            "enum": [
-              "scheduled",
-              "unscheduled"
-            ]
-          }
-        },
-        "required": [
-          "identifier",
-          "display_name",
-          "date",
-          "status",
-          "procedures",
-          "study_arm",
-          "protocol",
-          "study_event_type",
-          "position"
-        ],
-        "additionalProperties": false
-      },
-      "Task": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The task id",
-            "example": "e390325f-d528-4704-80ec-1dec0f317267"
-          },
-          "completed_date": {
-            "type": "string",
-            "description": "The task completed date",
-            "example": "2024-01-02T10:52:00.000Z",
-            "nullable": true
-          },
-          "completed_by": {
-            "$ref": "#/components/schemas/User",
-            "nullable": true
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The task display name",
-            "example": "task1"
-          },
-          "locked": {
-            "type": "boolean",
-            "description": "Whether the task is locked",
-            "example": false
-          },
-          "completed": {
-            "type": "boolean",
-            "description": "Whether the task is completed",
-            "example": true
-          },
-          "roles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Role"
-            }
-          }
-        },
-        "required": [
-          "id",
-          "completed_date",
-          "completed_by",
-          "display_name",
-          "locked",
-          "completed",
-          "roles"
-        ],
-        "additionalProperties": false
-      },
-      "StudyProcedureUpdate": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The update id",
-            "example": "33437756-043f-4ed6-9a83-e692244fe301"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The update created date",
-            "example": "2024-01-02T10:52:05.000Z"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "action": {
-            "type": "string",
-            "description": "The update action",
-            "example": "posted_update"
-          },
-          "action_text": {
-            "type": "string",
-            "description": "The update action text",
-            "example": "posted an update"
-          },
-          "update_type": {
-            "type": "string",
-            "description": "The update type",
-            "example": "user_comment"
-          },
-          "update_message": {
-            "type": "string",
-            "description": "The update message",
-            "example": "update"
-          }
-        }
-      },
-      "SiteUser": {
-        "type": "object",
-        "properties": {
-          "admin": {
-            "type": "boolean",
-            "description": "Whether the user is an admin",
-            "example": false
-          },
-          "email": {
-            "type": "string",
-            "description": "The email of the user",
-            "example": "example@gmail.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the user",
-            "example": "John"
-          },
-          "id": {
-            "type": "integer",
-            "description": "The user id",
-            "example": 1
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the user",
-            "example": "Doe"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          },
-          "uuid": {
-            "type": "string",
-            "description": "The uuid of the user",
-            "example": "123e4567-e89b-12d3-a456-426655440000"
-          }
-        }
-      },
       "Asset": {
         "description": "An asset",
         "type": "object",
@@ -3059,6 +2502,563 @@
           "processed"
         ],
         "additionalProperties": false
+      },
+      "Error": {
+        "description": "An error",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Bad request. Missing or invalid input parameters."
+          },
+          "fields": {
+            "type": "object",
+            "description": "The error fields",
+            "properties": {
+              "^.*$": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": {
+                  "name": [
+                    "can't be blank"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "PluralDisplay": {
+        "description": "Pluralised naming conventions",
+        "type": "object",
+        "properties": {
+          "plural": {
+            "description": "The plural name",
+            "type": "string",
+            "example": "visits"
+          },
+          "singular": {
+            "description": "The singular name",
+            "type": "string",
+            "example": "visit"
+          }
+        }
+      },
+      "Role": {
+        "description": "A role",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The role id",
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "description": "The name of the role",
+            "type": "string",
+            "example": "Power User"
+          }
+        }
+      },
+      "RoleDefinition": {
+        "description": "A role definition",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The role definition id",
+            "type": "number",
+            "example": 1
+          },
+          "notify": {
+            "description": "Whether the role definition should be",
+            "type": "boolean",
+            "example": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          }
+        },
+        "required": [
+          "id",
+          "notify",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "SiteUser": {
+        "type": "object",
+        "properties": {
+          "admin": {
+            "type": "boolean",
+            "description": "Whether the user is an admin",
+            "example": false
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user",
+            "example": "example@gmail.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user",
+            "example": "John"
+          },
+          "id": {
+            "type": "integer",
+            "description": "The user id",
+            "example": 1
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user",
+            "example": "Doe"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "uuid": {
+            "type": "string",
+            "description": "The uuid of the user",
+            "example": "123e4567-e89b-12d3-a456-426655440000"
+          }
+        }
+      },
+      "StudyEvent": {
+        "description": "A scheduled event for a subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The event id",
+            "example": 1,
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the event",
+            "example": "2024-01-02",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the event",
+            "example": "Day 1"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the event",
+            "example": "DAY1"
+          },
+          "position": {
+            "type": "number",
+            "description": "The position of the event",
+            "example": 1,
+            "nullable": true
+          },
+          "procedures": {
+            "type": "array",
+            "description": "The procedures for the event",
+            "items": {
+              "$ref": "#/components/schemas/StudyProcedure"
+            }
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/StudyProtocol"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the event",
+            "example": "complete",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "complete",
+              "requires_attention",
+              "not_required"
+            ]
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm of the event",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "study_event_type": {
+            "type": "string",
+            "description": "The study event type of the event",
+            "example": "scheduled",
+            "enum": [
+              "scheduled",
+              "unscheduled"
+            ]
+          }
+        },
+        "required": [
+          "identifier",
+          "display_name",
+          "date",
+          "status",
+          "procedures",
+          "study_arm",
+          "protocol",
+          "study_event_type",
+          "position"
+        ],
+        "additionalProperties": false
+      },
+      "StudyProcedure": {
+        "description": "A procedure for an event",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The procedure id",
+            "example": 1,
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the procedure",
+            "example": "2024-01-02",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the procedure",
+            "example": "North Star"
+          },
+          "evaluator_id": {
+            "type": "number",
+            "description": "The evaluator id",
+            "example": 1,
+            "nullable": true
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the procedure",
+            "example": "NSTAR"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/StudyProtocol"
+          },
+          "role_definitions": {
+            "type": "array",
+            "description": "The role definitions of the procedure",
+            "items": {
+              "$ref": "#/components/schemas/RoleDefinition"
+            }
+          },
+          "locked": {
+            "type": "boolean",
+            "description": "where the study procedure is locked",
+            "example": false
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the procedure",
+            "example": "complete",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "complete",
+              "requires_attention",
+              "not_required"
+            ]
+          },
+          "required_form_id": {
+            "type": "array",
+            "description": "The required form ids",
+            "items": {
+              "type": "number"
+            }
+          },
+          "required_form_templates": {
+            "type": "array",
+            "description": "The required form templates",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Form 1"
+                },
+                "version_number": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "version_number"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "identifier",
+          "display_name",
+          "date",
+          "evaluator_id",
+          "protocol",
+          "role_definitions",
+          "locked",
+          "status",
+          "required_form_id",
+          "required_form_templates"
+        ],
+        "additionalProperties": false
+      },
+      "StudyProcedureUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The update id",
+            "example": "33437756-043f-4ed6-9a83-e692244fe301"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The update created date",
+            "example": "2024-01-02T10:52:05.000Z"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "action": {
+            "type": "string",
+            "description": "The update action",
+            "example": "posted_update"
+          },
+          "action_text": {
+            "type": "string",
+            "description": "The update action text",
+            "example": "posted an update"
+          },
+          "update_type": {
+            "type": "string",
+            "description": "The update type",
+            "example": "user_comment"
+          },
+          "update_message": {
+            "type": "string",
+            "description": "The update message",
+            "example": "update"
+          }
+        }
+      },
+      "StudyProtocol": {
+        "description": "Protocol for a procedure/event",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The protocol id",
+            "type": "number",
+            "example": 1
+          },
+          "locked": {
+            "description": "locked status of the protocol",
+            "type": "boolean",
+            "example": false
+          },
+          "name": {
+            "description": "The name of the protocol",
+            "type": "string",
+            "example": "Ghost Protocol"
+          },
+          "study_event_display_name": {
+            "$ref": "#/components/schemas/PluralDisplay"
+          },
+          "study_procedure_display_name": {
+            "$ref": "#/components/schemas/PluralDisplay"
+          },
+          "study_procedure_role_definitions": {
+            "description": "The role definitions of the study procedure",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleDefinition"
+            }
+          },
+          "version_number": {
+            "description": "The version number of the protocol",
+            "type": "number",
+            "example": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "study_event_display_name",
+          "study_procedure_display_name",
+          "locked",
+          "version_number",
+          "study_procedure_role_definitions"
+        ],
+        "additionalProperties": false
+      },
+      "StudySubject": {
+        "description": "A subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The subject id",
+            "example": 1
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The serial number of the subject",
+            "example": "E001004"
+          },
+          "current_study_event": {
+            "type": "string",
+            "description": "The study event the subject is currently in",
+            "example": "DAY1",
+            "nullable": true
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm the subject is currently in",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "cohort": {
+            "type": "string",
+            "description": "The study cohort of the subject",
+            "example": "Arm 1",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Date time for when the subject was created",
+            "example": "2024-01-02T11:06:48.566Z"
+          },
+          "created_by": {
+            "description": "full name of subject creator",
+            "type": "string",
+            "example": "John Doe"
+          },
+          "creator": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "id",
+          "subject_number",
+          "current_study_event",
+          "created_at",
+          "created_by",
+          "creator"
+        ],
+        "additionalProperties": false
+      },
+      "StudySubjects": {
+        "description": "A list of subjects",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StudySubject"
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The task id",
+            "example": "e390325f-d528-4704-80ec-1dec0f317267"
+          },
+          "completed_date": {
+            "type": "string",
+            "description": "The task completed date",
+            "example": "2024-01-02T10:52:00.000Z",
+            "nullable": true
+          },
+          "completed_by": {
+            "$ref": "#/components/schemas/User",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The task display name",
+            "example": "task1"
+          },
+          "locked": {
+            "type": "boolean",
+            "description": "Whether the task is locked",
+            "example": false
+          },
+          "completed": {
+            "type": "boolean",
+            "description": "Whether the task is completed",
+            "example": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Role"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "completed_date",
+          "completed_by",
+          "display_name",
+          "locked",
+          "completed",
+          "roles"
+        ],
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "description": "A User",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The user id",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user",
+            "example": "test@user.com",
+            "format": "email"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user",
+            "example": "Doe"
+          },
+          "uuid": {
+            "type": "string",
+            "description": "The uuid of the user",
+            "example": "123e4567-e89b-12d3-a456-426655440000"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "first_name",
+          "last_name",
+          "uuid"
+        ],
+        "additionalProperties": false,
+        "nullable": true
       }
     },
     "responses": {

@@ -1,0 +1,49 @@
+{
+  "description": "Protocol for a procedure/event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The protocol id",
+      "type": "number",
+      "example": 1
+    },
+    "locked": {
+      "description": "locked status of the protocol",
+      "type": "boolean",
+      "example": false
+    },
+    "name": {
+      "description": "The name of the protocol",
+      "type": "string",
+      "example": "Ghost Protocol"
+    },
+    "study_event_display_name": {
+      "$ref": "./PluralDisplay.json"
+    },
+    "study_procedure_display_name": {
+      "$ref": "./PluralDisplay.json"
+    },
+    "study_procedure_role_definitions": {
+      "description": "The role definitions of the study procedure",
+      "type": "array",
+      "items": {
+        "$ref": "./RoleDefinition.json"
+      }
+    },
+    "version_number": {
+      "description": "The version number of the protocol",
+      "type": "number",
+      "example": 1
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "study_event_display_name",
+    "study_procedure_display_name",
+    "locked",
+    "version_number",
+    "study_procedure_role_definitions"
+  ],
+  "additionalProperties": false
+}
