@@ -40,5 +40,15 @@
       "example": "something",
       "nullable": true
     }
-  }
+  },
+  "required": [
+    "id",
+    "completed_by_id",
+    "created_at",
+    "completed_date",
+    "study_procedure_id",
+    "reason_for_creation",
+    "reason_for_resolving"
+  ],
+  "additionalProperties": false
 }

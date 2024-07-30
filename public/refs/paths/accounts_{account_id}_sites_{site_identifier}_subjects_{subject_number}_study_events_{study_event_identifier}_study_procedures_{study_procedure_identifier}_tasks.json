@@ -3,9 +3,7 @@
     "summary": "Get all tasks for a study procedure",
     "description": "Get all tasks for a study procedure",
     "operationId": "getStudyProcedureTasks",
-    "tags": [
-      "Study Procedures"
-    ],
+    "tags": ["Study Procedures"],
     "security": [
       {
         "userSessionKey": [],
@@ -76,6 +74,22 @@
                   "type": "array",
                   "items": {
                     "$ref": "../components/schemas/Task.json"
+                  }
+                },
+                "flagged_tasks": {
+                  "type": "object",
+                  "properties": {
+                    "tasks": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../components/schemas/FlaggedTaskWithUser.json"
+                      }
+                    },
+                    "complete": {
+                      "type": "boolean",
+                      "description": "Whether all flagged tasks are completed",
+                      "example": true
+                    }
                   }
                 },
                 "tasks_complete": {

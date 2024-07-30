@@ -118,6 +118,9 @@
       "FlaggedTask": {
         "$ref": "refs/components/schemas/FlaggedTask.json"
       },
+      "FlaggedTaskWithUser": {
+        "$ref": "refs/components/schemas/FlaggedTaskWithUser.json"
+      },
       "PluralDisplay": {
         "$ref": "refs/components/schemas/PluralDisplay.json"
       },

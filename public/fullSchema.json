@@ -1340,6 +1340,22 @@
                         "$ref": "#/components/schemas/Task"
                       }
                     },
+                    "flagged_tasks": {
+                      "type": "object",
+                      "properties": {
+                        "tasks": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/FlaggedTaskWithUser"
+                          }
+                        },
+                        "complete": {
+                          "type": "boolean",
+                          "description": "Whether all flagged tasks are completed",
+                          "example": true
+                        }
+                      }
+                    },
                     "tasks_complete": {
                       "type": "boolean",
                       "description": "Whether all tasks are completed",
@@ -2828,7 +2844,67 @@
             "example": "something",
             "nullable": true
           }
-        }
+        },
+        "required": [
+          "id",
+          "completed_by_id",
+          "created_at",
+          "completed_date",
+          "study_procedure_id",
+          "reason_for_creation",
+          "reason_for_resolving"
+        ],
+        "additionalProperties": false
+      },
+      "FlaggedTaskWithUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the flagged task",
+            "example": "e390325f-d528-4704-80ec-1dec0f317268"
+          },
+          "completed_date": {
+            "type": "string",
+            "description": "The date the flagged task was completed",
+            "example": "2024-01-02T10:52:00.000Z",
+            "nullable": true
+          },
+          "completed_by": {
+            "$ref": "#/components/schemas/User",
+            "nullable": true
+          },
+          "locked": {
+            "type": "boolean",
+            "description": "Whether the flagged task is locked",
+            "example": false
+          },
+          "completed": {
+            "type": "boolean",
+            "description": "Whether the flagged task is completed",
+            "example": true
+          },
+          "reason_for_creation": {
+            "type": "string",
+            "description": "The reason for creating the flagged task",
+            "example": "Please update the asset names (edit)"
+          },
+          "reason_for_resolving": {
+            "type": "string",
+            "description": "The reason for resolving the flagged task",
+            "example": "This has been completed",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "completed_date",
+          "completed_by",
+          "locked",
+          "completed",
+          "reason_for_creation"
+        ],
+        "additionalProperties": false
       },
       "PluralDisplay": {
         "description": "Pluralised naming conventions",
