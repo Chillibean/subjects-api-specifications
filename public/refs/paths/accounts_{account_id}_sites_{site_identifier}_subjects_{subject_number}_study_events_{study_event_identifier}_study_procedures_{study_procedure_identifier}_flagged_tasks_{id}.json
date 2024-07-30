@@ -3,7 +3,7 @@
     "summary": "Update a flagged task",
     "description": "Update a flagged task",
     "operationId": "updateFlaggedTask",
-    "tags": ["Study Procedures"],
+    "tags": ["Study Procedure Tasks"],
     "security": [
       {
         "userSessionKey": []

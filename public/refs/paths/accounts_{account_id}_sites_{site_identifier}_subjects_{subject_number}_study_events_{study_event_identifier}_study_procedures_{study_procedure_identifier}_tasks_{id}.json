@@ -4,7 +4,7 @@
     "description": "Endpoint for updating study procedure tasks",
     "operationId": "putStudyProcedureTasks",
     "tags": [
-      "Study Procedures"
+      "Study Procedure Tasks"
     ],
     "security": [
       {

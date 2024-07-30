@@ -4,7 +4,7 @@
     "description": "Start a multipart upload",
     "operationId": "postStartMultipart",
     "tags": [
-      "Uploads"
+      "Study Procedure Uploads"
     ],
     "security": [
       {

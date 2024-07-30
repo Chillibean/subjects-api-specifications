@@ -23,8 +23,20 @@
       "description": "Endpoints for Study Procedures"
     },
     {
-      "name": "Uploads",
-      "description": "Endpoints for uploading study procedure assets"
+      "name": "Study Procedure Uploads",
+      "description": "Endpoints for uploading study procedure uploads"
+    },
+    {
+      "name": "Study Procedure Tasks",
+      "description": "Endpoints for study procedure tasks"
+    },
+    {
+      "name": "Study Procedure Updates",
+      "description": "Endpoints for study procedure updates"
+    },
+    {
+      "name": "Study Procedure Clinical Evaluators",
+      "description": "Endpoints for study procedure clinical evaluators"
     }
   ],
   "servers": [

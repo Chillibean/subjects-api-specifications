@@ -4,7 +4,7 @@
     "description": "Upload a part of a multipart upload",
     "operationId": "postUploadPart",
     "tags": [
-      "Uploads"
+      "Study Procedure Uploads"
     ],
     "security": [
       {

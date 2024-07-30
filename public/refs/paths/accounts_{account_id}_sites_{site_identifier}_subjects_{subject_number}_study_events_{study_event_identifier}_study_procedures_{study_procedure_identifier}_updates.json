@@ -4,7 +4,7 @@
     "description": "Get all update records for a study procedure",
     "operationId": "getStudyProcedureUpdates",
     "tags": [
-      "Study Procedures"
+      "Study Procedure Updates"
     ],
     "security": [
       {
@@ -103,7 +103,7 @@
     "description": "Create a study procedure update record",
     "operationId": "postStudyProcedureUpdate",
     "tags": [
-      "Study Procedures"
+      "Study Procedure Updates"
     ],
     "security": [
       {

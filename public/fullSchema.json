@@ -33,8 +33,20 @@
       "description": "Endpoints for Study Procedures"
     },
     {
-      "name": "Uploads",
-      "description": "Endpoints for uploading study procedure assets"
+      "name": "Study Procedure Uploads",
+      "description": "Endpoints for uploading study procedure uploads"
+    },
+    {
+      "name": "Study Procedure Tasks",
+      "description": "Endpoints for study procedure tasks"
+    },
+    {
+      "name": "Study Procedure Updates",
+      "description": "Endpoints for study procedure updates"
+    },
+    {
+      "name": "Study Procedure Clinical Evaluators",
+      "description": "Endpoints for study procedure clinical evaluators"
     }
   ],
   "paths": {
@@ -1266,7 +1278,7 @@
         "description": "Get all tasks for a study procedure",
         "operationId": "getStudyProcedureTasks",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {
@@ -1393,7 +1405,7 @@
         "description": "Endpoint for updating study procedure tasks",
         "operationId": "putStudyProcedureTasks",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {
@@ -1535,7 +1547,7 @@
         "description": "Get all update records for a study procedure",
         "operationId": "getStudyProcedureUpdates",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Updates"
         ],
         "security": [
           {
@@ -1634,7 +1646,7 @@
         "description": "Create a study procedure update record",
         "operationId": "postStudyProcedureUpdate",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Updates"
         ],
         "security": [
           {
@@ -1753,7 +1765,7 @@
         "description": "Start a multipart upload",
         "operationId": "postStartMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -1884,7 +1896,7 @@
         "description": "Get all valid clinical evaluator options for a study procedure",
         "operationId": "getStudyProcedureClinicalEvaluatorList",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Clinical Evaluators"
         ],
         "security": [
           {
@@ -1985,7 +1997,7 @@
         "description": "Upload a part of a multipart upload",
         "operationId": "postUploadPart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2122,7 +2134,7 @@
         "description": "Complete a multipart upload",
         "operationId": "postCompleteMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2269,7 +2281,7 @@
         "description": "Abort a multipart upload",
         "operationId": "deleteAbortMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2395,7 +2407,7 @@
         "description": "Flag a task",
         "operationId": "postFlaggedTask",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {
@@ -2514,7 +2526,7 @@
         "description": "Update a flagged task",
         "operationId": "updateFlaggedTask",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {

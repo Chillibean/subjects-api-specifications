@@ -4,7 +4,7 @@
     "description": "Get all valid clinical evaluator options for a study procedure",
     "operationId": "getStudyProcedureClinicalEvaluatorList",
     "tags": [
-      "Study Procedures"
+      "Study Procedure Clinical Evaluators"
     ],
     "security": [
       {

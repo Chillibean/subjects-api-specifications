@@ -3,7 +3,7 @@
     "summary": "Get all tasks for a study procedure",
     "description": "Get all tasks for a study procedure",
     "operationId": "getStudyProcedureTasks",
-    "tags": ["Study Procedures"],
+    "tags": ["Study Procedure Tasks"],
     "security": [
       {
         "userSessionKey": [],

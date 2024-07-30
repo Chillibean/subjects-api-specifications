@@ -3,7 +3,7 @@
     "summary": "Flag a task",
     "description": "Flag a task",
     "operationId": "postFlaggedTask",
-    "tags": ["Study Procedures"],
+    "tags": ["Study Procedure Tasks"],
     "security": [
       {
         "userSessionKey": [],
