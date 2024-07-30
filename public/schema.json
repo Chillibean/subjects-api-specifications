@@ -85,6 +85,9 @@
     },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/abort_multipart": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_abort_multipart.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_flagged_tasks.json"
     }
   },
   "components": {
@@ -108,6 +111,9 @@
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
+      },
+      "FlaggedTask": {
+        "$ref": "refs/components/schemas/FlaggedTask.json"
       },
       "PluralDisplay": {
         "$ref": "refs/components/schemas/PluralDisplay.json"

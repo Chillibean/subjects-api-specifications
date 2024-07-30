@@ -1,0 +1,44 @@
+{
+  "description": "Flagged Task",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The flagged task id",
+      "example": "e390325f-d528-4704-80ec-1dec0f317268"
+    },
+    "completed_by_id": {
+      "type": "string",
+      "description": "The id of the user who completed the task",
+      "example": "1",
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The date the task was created",
+      "example": "something"
+    },
+    "completed_date": {
+      "type": "string",
+      "description": "The date the task was completed",
+      "example": "something",
+      "nullable": true
+    },
+    "study_procedure_id": {
+      "type": "integer",
+      "description": "The id of the study procedure",
+      "example": 1
+    },
+    "reason_for_creation": {
+      "type": "string",
+      "description": "The reason for flagging the task",
+      "example": "Please update the asset names"
+    },
+    "reason_for_resolving": {
+      "type": "string",
+      "description": "The reason for resolving the task",
+      "example": "something",
+      "nullable": true
+    }
+  }
+}

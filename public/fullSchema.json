@@ -2372,6 +2372,125 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
+      "post": {
+        "summary": "Flag a task",
+        "description": "Flag a task",
+        "operationId": "postFlaggedTask",
+        "tags": [
+          "Study Procedures"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_number",
+            "in": "path",
+            "description": "The subject number",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12345678"
+            }
+          },
+          {
+            "name": "study_event_identifier",
+            "in": "path",
+            "description": "The study event identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "VISIT1"
+            }
+          },
+          {
+            "name": "study_procedure_identifier",
+            "in": "path",
+            "description": "The study procedure identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "PROCEDURE1"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "type": "string",
+                    "description": "The authenticity token",
+                    "example": "sometoken"
+                  },
+                  "reason_for_creation": {
+                    "type": "string",
+                    "description": "The reason for flagging the task",
+                    "example": "Please update the asset names"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task flagged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlaggedTask"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2528,6 +2647,50 @@
                 }
               }
             }
+          }
+        }
+      },
+      "FlaggedTask": {
+        "description": "Flagged Task",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The flagged task id",
+            "example": "e390325f-d528-4704-80ec-1dec0f317268"
+          },
+          "completed_by_id": {
+            "type": "string",
+            "description": "The id of the user who completed the task",
+            "example": "1",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date the task was created",
+            "example": "something"
+          },
+          "completed_date": {
+            "type": "string",
+            "description": "The date the task was completed",
+            "example": "something",
+            "nullable": true
+          },
+          "study_procedure_id": {
+            "type": "integer",
+            "description": "The id of the study procedure",
+            "example": 1
+          },
+          "reason_for_creation": {
+            "type": "string",
+            "description": "The reason for flagging the task",
+            "example": "Please update the asset names"
+          },
+          "reason_for_resolving": {
+            "type": "string",
+            "description": "The reason for resolving the task",
+            "example": "something",
+            "nullable": true
           }
         }
       },
