@@ -8,20 +8,20 @@
       "example": "e390325f-d528-4704-80ec-1dec0f317268"
     },
     "completed_by_id": {
-      "type": "string",
+      "type": "number",
       "description": "The id of the user who completed the task",
-      "example": "1",
+      "example": 1,
       "nullable": true
     },
     "created_at": {
       "type": "string",
       "description": "The date the task was created",
-      "example": "something"
+      "example": "2024-01-01T00:00:00.000Z"
     },
     "completed_date": {
       "type": "string",
       "description": "The date the task was completed",
-      "example": "something",
+      "example": "2024-01-01T00:00:00.000Z",
       "nullable": true
     },
     "study_procedure_id": {
@@ -37,7 +37,7 @@
     "reason_for_resolving": {
       "type": "string",
       "description": "The reason for resolving the task",
-      "example": "something",
+      "example": "The asset names have been updated",
       "nullable": true
     }
   },

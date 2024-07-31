@@ -150,7 +150,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The authenticity token",
-                "example": "1234567890"
+                "example": "valid_token"
               },
               "date": {
                 "type": "string",

@@ -172,7 +172,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The auth token",
-                "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                "example": "valid_token"
               },
               "comment": {
                 "type": "string",

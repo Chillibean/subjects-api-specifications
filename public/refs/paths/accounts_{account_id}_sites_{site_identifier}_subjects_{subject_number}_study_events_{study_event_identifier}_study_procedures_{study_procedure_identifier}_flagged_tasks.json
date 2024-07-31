@@ -1,7 +1,7 @@
 {
   "post": {
-    "summary": "Flag a task",
-    "description": "Flag a task",
+    "summary": "Creating a flagged task",
+    "description": "This endpoint creates a flagged task for a study procedure",
     "operationId": "postFlaggedTask",
     "tags": ["Study Procedure Tasks"],
     "security": [
@@ -71,7 +71,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The authenticity token",
-                "example": "sometoken"
+                "example": "valid_token"
               },
               "reason_for_creation": {
                 "type": "string",

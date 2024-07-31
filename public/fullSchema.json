@@ -162,7 +162,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "subject_number": {
                     "type": "string",
@@ -354,7 +354,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "study_arm_id": {
                     "type": "number",
@@ -640,7 +640,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "date": {
                     "type": "string",
@@ -865,7 +865,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "date": {
                     "type": "string",
@@ -1484,7 +1484,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The auth token",
-                    "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                    "example": "valid_token"
                   },
                   "completed": {
                     "type": "boolean",
@@ -1715,7 +1715,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The auth token",
-                    "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                    "example": "valid_token"
                   },
                   "comment": {
                     "type": "string",
@@ -1834,7 +1834,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "filename": {
                     "type": "string",
@@ -2066,7 +2066,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "data": {
                     "type": "string",
@@ -2203,7 +2203,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "parts": {
                     "type": "array",
@@ -2350,7 +2350,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "upload_id": {
                     "type": "integer",
@@ -2403,8 +2403,8 @@
     },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
       "post": {
-        "summary": "Flag a task",
-        "description": "Flag a task",
+        "summary": "Creating a flagged task",
+        "description": "This endpoint creates a flagged task for a study procedure",
         "operationId": "postFlaggedTask",
         "tags": [
           "Study Procedure Tasks"
@@ -2476,7 +2476,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "sometoken"
+                    "example": "valid_token"
                   },
                   "reason_for_creation": {
                     "type": "string",
@@ -2594,7 +2594,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "1"
+              "example": "e390325f-d528-4704-80ec-1dec0f317268"
             }
           }
         ],
@@ -2607,7 +2607,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "sometoken"
+                    "example": "valid_token"
                   },
                   "reason_for_creation": {
                     "type": "string",
@@ -2824,20 +2824,20 @@
             "example": "e390325f-d528-4704-80ec-1dec0f317268"
           },
           "completed_by_id": {
-            "type": "string",
+            "type": "number",
             "description": "The id of the user who completed the task",
-            "example": "1",
+            "example": 1,
             "nullable": true
           },
           "created_at": {
             "type": "string",
             "description": "The date the task was created",
-            "example": "something"
+            "example": "2024-01-01T00:00:00.000Z"
           },
           "completed_date": {
             "type": "string",
             "description": "The date the task was completed",
-            "example": "something",
+            "example": "2024-01-01T00:00:00.000Z",
             "nullable": true
           },
           "study_procedure_id": {
@@ -2853,7 +2853,7 @@
           "reason_for_resolving": {
             "type": "string",
             "description": "The reason for resolving the task",
-            "example": "something",
+            "example": "The asset names have been updated",
             "nullable": true
           }
         },
@@ -2869,6 +2869,7 @@
         "additionalProperties": false
       },
       "FlaggedTaskWithUser": {
+        "description": "A flagged task with a user",
         "type": "object",
         "properties": {
           "id": {

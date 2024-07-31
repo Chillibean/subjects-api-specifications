@@ -70,7 +70,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "1"
+          "example": "e390325f-d528-4704-80ec-1dec0f317268"
         }
       }
     ],
@@ -83,7 +83,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The authenticity token",
-                "example": "sometoken"
+                "example": "valid_token"
               },
               "reason_for_creation": {
                 "type": "string",
