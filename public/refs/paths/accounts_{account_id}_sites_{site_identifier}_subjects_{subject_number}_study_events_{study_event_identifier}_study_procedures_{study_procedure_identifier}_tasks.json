@@ -82,7 +82,7 @@
                     "tasks": {
                       "type": "array",
                       "items": {
-                        "$ref": "../components/schemas/FlaggedTaskWithUser.json"
+                        "$ref": "../components/schemas/FlaggedTask.json"
                       }
                     },
                     "complete": {

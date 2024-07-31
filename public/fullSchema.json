@@ -1358,7 +1358,7 @@
                         "tasks": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/FlaggedTaskWithUser"
+                            "$ref": "#/components/schemas/FlaggedTask"
                           }
                         },
                         "complete": {
@@ -2815,61 +2815,7 @@
         }
       },
       "FlaggedTask": {
-        "description": "Flagged Task",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The flagged task id",
-            "example": "e390325f-d528-4704-80ec-1dec0f317268"
-          },
-          "completed_by_id": {
-            "type": "number",
-            "description": "The id of the user who completed the task",
-            "example": 1,
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The date the task was created",
-            "example": "2024-01-01T00:00:00.000Z"
-          },
-          "completed_date": {
-            "type": "string",
-            "description": "The date the task was completed",
-            "example": "2024-01-01T00:00:00.000Z",
-            "nullable": true
-          },
-          "study_procedure_id": {
-            "type": "integer",
-            "description": "The id of the study procedure",
-            "example": 1
-          },
-          "reason_for_creation": {
-            "type": "string",
-            "description": "The reason for flagging the task",
-            "example": "Please update the asset names"
-          },
-          "reason_for_resolving": {
-            "type": "string",
-            "description": "The reason for resolving the task",
-            "example": "The asset names have been updated",
-            "nullable": true
-          }
-        },
-        "required": [
-          "id",
-          "completed_by_id",
-          "created_at",
-          "completed_date",
-          "study_procedure_id",
-          "reason_for_creation",
-          "reason_for_resolving"
-        ],
-        "additionalProperties": false
-      },
-      "FlaggedTaskWithUser": {
-        "description": "A flagged task with a user",
+        "description": "A flagged task",
         "type": "object",
         "properties": {
           "id": {
@@ -2882,6 +2828,9 @@
             "description": "The date the flagged task was completed",
             "example": "2024-01-02T10:52:00.000Z",
             "nullable": true
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/User"
           },
           "completed_by": {
             "$ref": "#/components/schemas/User",

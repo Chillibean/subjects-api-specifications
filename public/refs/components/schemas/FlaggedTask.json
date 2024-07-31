@@ -1,54 +1,54 @@
 {
-  "description": "Flagged Task",
+  "description": "A flagged task",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
-      "description": "The flagged task id",
+      "description": "The id of the flagged task",
       "example": "e390325f-d528-4704-80ec-1dec0f317268"
-    },
-    "completed_by_id": {
-      "type": "number",
-      "description": "The id of the user who completed the task",
-      "example": 1,
-      "nullable": true
-    },
-    "created_at": {
-      "type": "string",
-      "description": "The date the task was created",
-      "example": "2024-01-01T00:00:00.000Z"
     },
     "completed_date": {
       "type": "string",
-      "description": "The date the task was completed",
-      "example": "2024-01-01T00:00:00.000Z",
+      "description": "The date the flagged task was completed",
+      "example": "2024-01-02T10:52:00.000Z",
       "nullable": true
     },
-    "study_procedure_id": {
-      "type": "integer",
-      "description": "The id of the study procedure",
-      "example": 1
+    "created_by": {
+      "$ref": "./User.json"
+    },
+    "completed_by": {
+      "$ref": "./User.json",
+      "nullable": true
+    },
+    "locked": {
+      "type": "boolean",
+      "description": "Whether the flagged task is locked",
+      "example": false
+    },
+    "completed": {
+      "type": "boolean",
+      "description": "Whether the flagged task is completed",
+      "example": true
     },
     "reason_for_creation": {
       "type": "string",
-      "description": "The reason for flagging the task",
-      "example": "Please update the asset names"
+      "description": "The reason for creating the flagged task",
+      "example": "Please update the asset names (edit)"
     },
     "reason_for_resolving": {
       "type": "string",
-      "description": "The reason for resolving the task",
-      "example": "The asset names have been updated",
+      "description": "The reason for resolving the flagged task",
+      "example": "This has been completed",
       "nullable": true
     }
   },
   "required": [
     "id",
-    "completed_by_id",
-    "created_at",
     "completed_date",
-    "study_procedure_id",
-    "reason_for_creation",
-    "reason_for_resolving"
+    "completed_by",
+    "locked",
+    "completed",
+    "reason_for_creation"
   ],
   "additionalProperties": false
 }
