@@ -4,7 +4,7 @@
     "description": "Abort a multipart upload",
     "operationId": "deleteAbortMultipart",
     "tags": [
-      "Uploads"
+      "Study Procedure Uploads"
     ],
     "security": [
       {
@@ -73,7 +73,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The authenticity token",
-                "example": "1234567890"
+                "example": "valid_token"
               },
               "upload_id": {
                 "type": "integer",

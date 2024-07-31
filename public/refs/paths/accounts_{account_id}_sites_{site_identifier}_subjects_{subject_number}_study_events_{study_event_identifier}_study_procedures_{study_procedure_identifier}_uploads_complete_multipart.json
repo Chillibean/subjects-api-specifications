@@ -4,7 +4,7 @@
     "description": "Complete a multipart upload",
     "operationId": "postCompleteMultipart",
     "tags": [
-      "Uploads"
+      "Study Procedure Uploads"
     ],
     "security": [
       {
@@ -73,7 +73,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The authenticity token",
-                "example": "1234567890"
+                "example": "valid_token"
               },
               "parts": {
                 "type": "array",
