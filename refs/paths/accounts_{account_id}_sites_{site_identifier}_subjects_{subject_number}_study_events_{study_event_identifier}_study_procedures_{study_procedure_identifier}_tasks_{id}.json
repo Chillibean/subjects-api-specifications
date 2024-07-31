@@ -4,7 +4,7 @@
     "description": "Endpoint for updating study procedure tasks",
     "operationId": "putStudyProcedureTasks",
     "tags": [
-      "Study Procedures"
+      "Study Procedure Tasks"
     ],
     "security": [
       {
@@ -83,7 +83,7 @@
               "authenticity_token": {
                 "type": "string",
                 "description": "The auth token",
-                "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                "example": "valid_token"
               },
               "completed": {
                 "type": "boolean",

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -33,8 +33,20 @@
       "description": "Endpoints for Study Procedures"
     },
     {
-      "name": "Uploads",
-      "description": "Endpoints for uploading study procedure assets"
+      "name": "Study Procedure Uploads",
+      "description": "Endpoints for uploading study procedure uploads"
+    },
+    {
+      "name": "Study Procedure Tasks",
+      "description": "Endpoints for study procedure tasks"
+    },
+    {
+      "name": "Study Procedure Updates",
+      "description": "Endpoints for study procedure updates"
+    },
+    {
+      "name": "Study Procedure Clinical Evaluators",
+      "description": "Endpoints for study procedure clinical evaluators"
     }
   ],
   "paths": {
@@ -150,7 +162,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "subject_number": {
                     "type": "string",
@@ -342,7 +354,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "study_arm_id": {
                     "type": "number",
@@ -628,7 +640,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "date": {
                     "type": "string",
@@ -853,7 +865,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "date": {
                     "type": "string",
@@ -1266,7 +1278,7 @@
         "description": "Get all tasks for a study procedure",
         "operationId": "getStudyProcedureTasks",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {
@@ -1340,6 +1352,22 @@
                         "$ref": "#/components/schemas/Task"
                       }
                     },
+                    "flagged_tasks": {
+                      "type": "object",
+                      "properties": {
+                        "tasks": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/FlaggedTask"
+                          }
+                        },
+                        "complete": {
+                          "type": "boolean",
+                          "description": "Whether all flagged tasks are completed",
+                          "example": true
+                        }
+                      }
+                    },
                     "tasks_complete": {
                       "type": "boolean",
                       "description": "Whether all tasks are completed",
@@ -1377,7 +1405,7 @@
         "description": "Endpoint for updating study procedure tasks",
         "operationId": "putStudyProcedureTasks",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Tasks"
         ],
         "security": [
           {
@@ -1456,7 +1484,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The auth token",
-                    "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                    "example": "valid_token"
                   },
                   "completed": {
                     "type": "boolean",
@@ -1519,7 +1547,7 @@
         "description": "Get all update records for a study procedure",
         "operationId": "getStudyProcedureUpdates",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Updates"
         ],
         "security": [
           {
@@ -1618,7 +1646,7 @@
         "description": "Create a study procedure update record",
         "operationId": "postStudyProcedureUpdate",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Updates"
         ],
         "security": [
           {
@@ -1687,7 +1715,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The auth token",
-                    "example": "dfasafdadfsdasfdfskafdadfsklfdksal"
+                    "example": "valid_token"
                   },
                   "comment": {
                     "type": "string",
@@ -1737,7 +1765,7 @@
         "description": "Start a multipart upload",
         "operationId": "postStartMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -1806,7 +1834,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "filename": {
                     "type": "string",
@@ -1868,7 +1896,7 @@
         "description": "Get all valid clinical evaluator options for a study procedure",
         "operationId": "getStudyProcedureClinicalEvaluatorList",
         "tags": [
-          "Study Procedures"
+          "Study Procedure Clinical Evaluators"
         ],
         "security": [
           {
@@ -1969,7 +1997,7 @@
         "description": "Upload a part of a multipart upload",
         "operationId": "postUploadPart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2038,7 +2066,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "data": {
                     "type": "string",
@@ -2106,7 +2134,7 @@
         "description": "Complete a multipart upload",
         "operationId": "postCompleteMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2175,7 +2203,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "parts": {
                     "type": "array",
@@ -2253,7 +2281,7 @@
         "description": "Abort a multipart upload",
         "operationId": "deleteAbortMultipart",
         "tags": [
-          "Uploads"
+          "Study Procedure Uploads"
         ],
         "security": [
           {
@@ -2322,7 +2350,7 @@
                   "authenticity_token": {
                     "type": "string",
                     "description": "The authenticity token",
-                    "example": "1234567890"
+                    "example": "valid_token"
                   },
                   "upload_id": {
                     "type": "integer",
@@ -2348,6 +2376,261 @@
                       "example": 1
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
+      "post": {
+        "summary": "Creating a flagged task",
+        "description": "This endpoint creates a flagged task for a study procedure",
+        "operationId": "postFlaggedTask",
+        "tags": [
+          "Study Procedure Tasks"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_number",
+            "in": "path",
+            "description": "The subject number",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12345678"
+            }
+          },
+          {
+            "name": "study_event_identifier",
+            "in": "path",
+            "description": "The study event identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "VISIT1"
+            }
+          },
+          {
+            "name": "study_procedure_identifier",
+            "in": "path",
+            "description": "The study procedure identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "PROCEDURE1"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "type": "string",
+                    "description": "The authenticity token",
+                    "example": "valid_token"
+                  },
+                  "reason_for_creation": {
+                    "type": "string",
+                    "description": "The reason for flagging the task",
+                    "example": "Please update the asset names"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task flagged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlaggedTask"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks/{id}": {
+      "put": {
+        "summary": "Update a flagged task",
+        "description": "Update a flagged task",
+        "operationId": "updateFlaggedTask",
+        "tags": [
+          "Study Procedure Tasks"
+        ],
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "site_identifier",
+            "in": "path",
+            "description": "The site identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "SITE1"
+            }
+          },
+          {
+            "name": "subject_number",
+            "in": "path",
+            "description": "The subject number",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12345678"
+            }
+          },
+          {
+            "name": "study_event_identifier",
+            "in": "path",
+            "description": "The study event identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "VISIT1"
+            }
+          },
+          {
+            "name": "study_procedure_identifier",
+            "in": "path",
+            "description": "The study procedure identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "PROCEDURE1"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The flagged task id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "e390325f-d528-4704-80ec-1dec0f317268"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "type": "string",
+                    "description": "The authenticity token",
+                    "example": "valid_token"
+                  },
+                  "reason_for_creation": {
+                    "type": "string",
+                    "description": "The reason for flagging the task",
+                    "example": "Please update the asset names"
+                  },
+                  "reason_for_resolving": {
+                    "type": "string",
+                    "description": "The reason for resolving the task",
+                    "example": "This has been completed"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Flagged task updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlaggedTask"
                 }
               }
             }
@@ -2530,6 +2813,60 @@
             }
           }
         }
+      },
+      "FlaggedTask": {
+        "description": "A flagged task",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the flagged task",
+            "example": "e390325f-d528-4704-80ec-1dec0f317268"
+          },
+          "completed_date": {
+            "type": "string",
+            "description": "The date the flagged task was completed",
+            "example": "2024-01-02T10:52:00.000Z",
+            "nullable": true
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/User"
+          },
+          "completed_by": {
+            "$ref": "#/components/schemas/User",
+            "nullable": true
+          },
+          "locked": {
+            "type": "boolean",
+            "description": "Whether the flagged task is locked",
+            "example": false
+          },
+          "completed": {
+            "type": "boolean",
+            "description": "Whether the flagged task is completed",
+            "example": true
+          },
+          "reason_for_creation": {
+            "type": "string",
+            "description": "The reason for creating the flagged task",
+            "example": "Please update the asset names (edit)"
+          },
+          "reason_for_resolving": {
+            "type": "string",
+            "description": "The reason for resolving the flagged task",
+            "example": "This has been completed",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "completed_date",
+          "completed_by",
+          "locked",
+          "completed",
+          "reason_for_creation"
+        ],
+        "additionalProperties": false
       },
       "PluralDisplay": {
         "description": "Pluralised naming conventions",
@@ -2801,6 +3138,11 @@
               ],
               "additionalProperties": false
             }
+          },
+          "has_flagged_tasks": {
+            "type": "boolean",
+            "description": "Whether the procedure has flagged tasks",
+            "example": true
           }
         },
         "required": [
@@ -2814,7 +3156,8 @@
           "locked",
           "status",
           "required_form_id",
-          "required_form_templates"
+          "required_form_templates",
+          "has_flagged_tasks"
         ],
         "additionalProperties": false
       },

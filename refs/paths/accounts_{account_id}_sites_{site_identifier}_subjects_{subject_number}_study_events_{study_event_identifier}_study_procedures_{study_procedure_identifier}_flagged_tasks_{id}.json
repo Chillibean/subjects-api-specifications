@@ -1,14 +1,14 @@
 {
-  "post": {
-    "summary": "Upload a part of a multipart upload",
-    "description": "Upload a part of a multipart upload",
-    "operationId": "postUploadPart",
-    "tags": [
-      "Study Procedure Uploads"
-    ],
+  "put": {
+    "summary": "Update a flagged task",
+    "description": "Update a flagged task",
+    "operationId": "updateFlaggedTask",
+    "tags": ["Study Procedure Tasks"],
     "security": [
       {
-        "userSessionKey": [],
+        "userSessionKey": []
+      },
+      {
         "chillipharmSession": []
       }
     ],
@@ -60,13 +60,23 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "PROC1"
+          "example": "PROCEDURE1"
+        }
+      },
+      {
+        "name": "id",
+        "in": "path",
+        "description": "The flagged task id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "e390325f-d528-4704-80ec-1dec0f317268"
         }
       }
     ],
     "requestBody": {
       "content": {
-        "multipart/form-data": {
+        "application/json": {
           "schema": {
             "type": "object",
             "properties": {
@@ -75,21 +85,15 @@
                 "description": "The authenticity token",
                 "example": "valid_token"
               },
-              "data": {
+              "reason_for_creation": {
                 "type": "string",
-                "format": "binary",
-                "description": "The data to upload",
-                "example": "data"
+                "description": "The reason for flagging the task",
+                "example": "Please update the asset names"
               },
-              "part_number": {
-                "type": "integer",
-                "description": "The part number",
-                "example": 1
-              },
-              "upload_id": {
-                "type": "integer",
-                "description": "The upload id",
-                "example": 1
+              "reason_for_resolving": {
+                "type": "string",
+                "description": "The reason for resolving the task",
+                "example": "This has been completed"
               }
             }
           }
@@ -98,18 +102,11 @@
     },
     "responses": {
       "200": {
-        "description": "OK",
+        "description": "Flagged task updated successfully",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "etag": {
-                  "type": "string",
-                  "description": "The etag",
-                  "example": "\"1234567890\""
-                }
-              }
+              "$ref": "../components/schemas/FlaggedTask.json"
             }
           }
         }

@@ -83,13 +83,14 @@
             "example": 1
           }
         },
-        "required": [
-          "id",
-          "title",
-          "version_number"
-        ],
+        "required": ["id", "title", "version_number"],
         "additionalProperties": false
       }
+    },
+    "has_flagged_tasks": {
+      "type": "boolean",
+      "description": "Whether the procedure has flagged tasks",
+      "example": true
     }
   },
   "required": [
@@ -103,7 +104,8 @@
     "locked",
     "status",
     "required_form_id",
-    "required_form_templates"
+    "required_form_templates",
+    "has_flagged_tasks"
   ],
   "additionalProperties": false
 }
