@@ -2405,7 +2405,7 @@
       "post": {
         "summary": "Creating a flagged task",
         "description": "This endpoint creates a flagged task for a study procedure",
-        "operationId": "postFlaggedTask",
+        "operationId": "createFlaggedTask",
         "tags": [
           "Study Procedure Tasks"
         ],
