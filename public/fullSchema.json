@@ -3143,6 +3143,11 @@
             "type": "boolean",
             "description": "Whether the procedure has flagged tasks",
             "example": true
+          },
+          "flagged_tasks_completed": {
+            "type": "boolean",
+            "description": "Whether the flagged tasks are completed",
+            "example": true
           }
         },
         "required": [
@@ -3157,7 +3162,8 @@
           "status",
           "required_form_id",
           "required_form_templates",
-          "has_flagged_tasks"
+          "has_flagged_tasks",
+          "flagged_tasks_completed"
         ],
         "additionalProperties": false
       },
