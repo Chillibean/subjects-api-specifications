@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.4",
+    "version": "2.1.5",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -126,6 +126,9 @@
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
+      },
+      "Evaluator": {
+        "$ref": "refs/components/schemas/Evaluator.json"
       },
       "FlaggedTask": {
         "$ref": "refs/components/schemas/FlaggedTask.json"

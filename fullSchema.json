@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.4",
+    "version": "2.1.5",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2814,6 +2814,39 @@
           }
         }
       },
+      "Evaluator": {
+        "type": "object",
+        "description": "An evaluator",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The user id",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user",
+            "example": "test@user.com",
+            "format": "email"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user",
+            "example": "Doe"
+          },
+          "uuid": {
+            "type": "string",
+            "description": "The uuid of the user",
+            "example": "123e4567-e89b-12d3-a456-426655440000"
+          }
+        },
+        "nullable": true
+      },
       "FlaggedTask": {
         "description": "A flagged task",
         "type": "object",
@@ -2822,6 +2855,11 @@
             "type": "string",
             "description": "The id of the flagged task",
             "example": "e390325f-d528-4704-80ec-1dec0f317268"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date the flagged task was created",
+            "example": "2024-01-02T10:52:00.000Z"
           },
           "completed_date": {
             "type": "string",
@@ -3067,11 +3105,8 @@
             "description": "The display name of the procedure",
             "example": "North Star"
           },
-          "evaluator_id": {
-            "type": "number",
-            "description": "The evaluator id",
-            "example": 1,
-            "nullable": true
+          "evaluator": {
+            "$ref": "#/components/schemas/Evaluator"
           },
           "identifier": {
             "type": "string",
@@ -3155,7 +3190,7 @@
           "identifier",
           "display_name",
           "date",
-          "evaluator_id",
+          "evaluator",
           "protocol",
           "role_definitions",
           "locked",
