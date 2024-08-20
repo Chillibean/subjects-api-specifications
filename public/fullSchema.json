@@ -3157,7 +3157,7 @@
           "identifier",
           "display_name",
           "date",
-          "evaluator_id",
+          "evaluator",
           "protocol",
           "role_definitions",
           "locked",
