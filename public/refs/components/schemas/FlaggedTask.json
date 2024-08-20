@@ -7,6 +7,11 @@
       "description": "The id of the flagged task",
       "example": "e390325f-d528-4704-80ec-1dec0f317268"
     },
+    "created_at": {
+      "type": "string",
+      "description": "The date the flagged task was created",
+      "example": "2024-01-02T10:52:00.000Z"
+    },
     "completed_date": {
       "type": "string",
       "description": "The date the flagged task was completed",
