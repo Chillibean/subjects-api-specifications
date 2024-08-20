@@ -20,7 +20,7 @@
       "example": "North Star"
     },
     "evaluator": {
-      "$ref": "./User.json"
+      "$ref": "./Evaluator.json"
     },
     "identifier": {
       "type": "string",
