@@ -19,11 +19,8 @@
       "description": "The display name of the procedure",
       "example": "North Star"
     },
-    "evaluator_id": {
-      "type": "number",
-      "description": "The evaluator id",
-      "example": 1,
-      "nullable": true
+    "evaluator": {
+      "$ref": "./User.json"
     },
     "identifier": {
       "type": "string",
