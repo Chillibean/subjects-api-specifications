@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.5",
+    "version": "2.2.0",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2630,7 +2630,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FlaggedTask"
+                  "type": "object",
+                  "properties": {
+                    "flagged_tasks": {
+                      "items": {
+                        "$ref": "#/components/schemas/FlaggedTask"
+                      }
+                    },
+                    "flagged_tasks_complete": {
+                      "type": "boolean",
+                      "description": "Flagged tasks completed"
+                    },
+                    "all_tasks_complete": {
+                      "type": "boolean",
+                      "description": "All tasks completed"
+                    }
+                  }
                 }
               }
             }
