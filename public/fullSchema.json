@@ -2630,7 +2630,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FlaggedTask"
+                  "type": "object",
+                  "properties": {
+                    "flagged_tasks": {
+                      "items": {
+                        "$ref": "#/components/schemas/FlaggedTask"
+                      }
+                    },
+                    "flagged_tasks_complete": {
+                      "type": "boolean",
+                      "description": "Flagged tasks completed"
+                    },
+                    "all_tasks_complete": {
+                      "type": "boolean",
+                      "description": "All tasks completed"
+                    }
+                  }
                 }
               }
             }
