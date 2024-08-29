@@ -66,6 +66,16 @@
         "scheduled",
         "unscheduled"
       ]
+    },
+    "contains_flagged_tasks": {
+      "type": "boolean",
+      "description": "Whether the event contains flagged tasks",
+      "example": true
+    },
+    "flagged_tasks_all_completed": {
+      "type": "boolean",
+      "description": "Whether all flagged tasks are completed",
+      "example": true
     }
   },
   "required": [
@@ -77,7 +87,9 @@
     "study_arm",
     "protocol",
     "study_event_type",
-    "position"
+    "position",
+    "contains_flagged_tasks",
+    "flagged_tasks_all_completed"
   ],
   "additionalProperties": false
 }

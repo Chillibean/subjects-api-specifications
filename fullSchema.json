@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.0",
+    "version": "2.2.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -3084,6 +3084,16 @@
               "scheduled",
               "unscheduled"
             ]
+          },
+          "contains_flagged_tasks": {
+            "type": "boolean",
+            "description": "Whether the event contains flagged tasks",
+            "example": true
+          },
+          "flagged_tasks_all_completed": {
+            "type": "boolean",
+            "description": "Whether all flagged tasks are completed",
+            "example": true
           }
         },
         "required": [
@@ -3095,7 +3105,9 @@
           "study_arm",
           "protocol",
           "study_event_type",
-          "position"
+          "position",
+          "contains_flagged_tasks",
+          "flagged_tasks_all_completed"
         ],
         "additionalProperties": false
       },
