@@ -2482,6 +2482,14 @@
                     "type": "string",
                     "description": "The reason for flagging the task",
                     "example": "Please update the asset names"
+                  },
+                  "notify_users_list": {
+                    "type": "array",
+                    "description": "The list of users to notify",
+                    "items": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    }
                   }
                 }
               }
@@ -2618,6 +2626,14 @@
                     "type": "string",
                     "description": "The reason for resolving the task",
                     "example": "This has been completed"
+                  },
+                  "notify_users_list": {
+                    "type": "array",
+                    "description": "The list of user emails to notify",
+                    "items": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    }
                   }
                 }
               }
