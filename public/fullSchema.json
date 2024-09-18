@@ -2925,6 +2925,9 @@
             "description": "The reason for resolving the flagged task",
             "example": "This has been completed",
             "nullable": true
+          },
+          "notify_details": {
+            "$ref": "#/components/schemas/ProcedureFlaggedTaskNotifyDetails"
           }
         },
         "required": [
@@ -2933,7 +2936,8 @@
           "completed_by",
           "locked",
           "completed",
-          "reason_for_creation"
+          "reason_for_creation",
+          "notify_details"
         ],
         "additionalProperties": false
       },
@@ -3486,6 +3490,25 @@
         ],
         "additionalProperties": false,
         "nullable": true
+      },
+      "ProcedureFlaggedTaskNotifyDetails": {
+        "type": "object",
+        "properties": {
+          "creation_users": {
+            "type": "array",
+            "description": "The users who created the flagged task",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "resolving_users": {
+            "type": "array",
+            "description": "The users who resolved the flagged task",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
       }
     },
     "responses": {
