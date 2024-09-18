@@ -136,6 +136,9 @@
       "PluralDisplay": {
         "$ref": "refs/components/schemas/PluralDisplay.json"
       },
+      "ProcedureFlaggedTaskNotifyDetails": {
+        "$ref": "refs/components/schemas/ProcedureFlaggedTaskNotifyDetails.json"
+      },
       "Role": {
         "$ref": "refs/components/schemas/Role.json"
       },

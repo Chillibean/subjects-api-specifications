@@ -2957,6 +2957,25 @@
           }
         }
       },
+      "ProcedureFlaggedTaskNotifyDetails": {
+        "type": "object",
+        "properties": {
+          "creation_users": {
+            "type": "array",
+            "description": "The users who created the flagged task",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "resolving_users": {
+            "type": "array",
+            "description": "The users who resolved the flagged task",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
       "Role": {
         "description": "A role",
         "type": "object",
@@ -3490,25 +3509,6 @@
         ],
         "additionalProperties": false,
         "nullable": true
-      },
-      "ProcedureFlaggedTaskNotifyDetails": {
-        "type": "object",
-        "properties": {
-          "creation_users": {
-            "type": "array",
-            "description": "The users who created the flagged task",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          "resolving_users": {
-            "type": "array",
-            "description": "The users who resolved the flagged task",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        }
       }
     },
     "responses": {
