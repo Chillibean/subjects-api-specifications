@@ -45,6 +45,9 @@
       "description": "The reason for resolving the flagged task",
       "example": "This has been completed",
       "nullable": true
+    },
+    "notify_details": {
+      "$ref": "./ProcedureFlaggedTaskNotifyDetails.json"
     }
   },
   "required": [
@@ -53,7 +56,8 @@
     "completed_by",
     "locked",
     "completed",
-    "reason_for_creation"
+    "reason_for_creation",
+    "notify_details"
   ],
   "additionalProperties": false
 }
