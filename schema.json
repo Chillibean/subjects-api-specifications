@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.1",
+    "version": "2.2.2",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -135,6 +135,9 @@
       },
       "PluralDisplay": {
         "$ref": "refs/components/schemas/PluralDisplay.json"
+      },
+      "ProcedureFlaggedTaskNotifyDetails": {
+        "$ref": "refs/components/schemas/ProcedureFlaggedTaskNotifyDetails.json"
       },
       "Role": {
         "$ref": "refs/components/schemas/Role.json"
