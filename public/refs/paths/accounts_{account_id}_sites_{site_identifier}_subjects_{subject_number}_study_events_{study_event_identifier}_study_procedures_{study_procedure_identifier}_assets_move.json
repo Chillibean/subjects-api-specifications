@@ -1,7 +1,7 @@
 {
   "put": {
     "summary": "Move assets between study procedures",
-    "description": "Move assets between study procedure",
+    "description": "Move assets between study procedures",
     "operationId": "moveAssets",
     "tags": ["Study Procedure Assets"],
     "security": [
@@ -64,7 +64,7 @@
     ],
     "requestBody": {
       "content": {
-        "multipart/form-data": {
+        "application/json": {
           "schema": {
             "type": "object",
             "properties": {
@@ -73,30 +73,8 @@
                 "description": "The authenticity token",
                 "example": "valid_token"
               },
-              "assets": {
-                "type": "array",
-                "description": "The IDs of assets",
-                "example":  [1, 4, 100]
-              },
-              "subject_number": {
-                "type": "string",
-                "description": "The subject number of assets",
-                "example": "E0010023"
-              },
-              "study_event_identifier": {
-                "type": "string",
-                "description": "The study event identifier of assets",
-                "example": "VISIT1"
-              },
-              "study_procedure_identifier": {
-                "type": "string",
-                "description": "The asset study procedure identifier of assets",
-                "example": "NSTAR"
-              },
-              "reason_for_moving": {
-                "type": "string",
-                "description": "The reason for moving the assets",
-                "example": "Mistake"
+              "items": {
+                "$ref": "../components/schemas/AssetsMove.json"
               }
             }
           }
