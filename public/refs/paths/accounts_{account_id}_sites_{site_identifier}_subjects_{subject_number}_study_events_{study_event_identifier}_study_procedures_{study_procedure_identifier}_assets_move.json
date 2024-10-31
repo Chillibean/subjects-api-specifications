@@ -73,9 +73,7 @@
                 "description": "The authenticity token",
                 "example": "valid_token"
               },
-              "items": {
-                "$ref": "../components/schemas/AssetsMove.json"
-              }
+              "$ref": "../components/schemas/AssetsMove.json"
             }
           }
         }

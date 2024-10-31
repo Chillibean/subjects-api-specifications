@@ -1,7 +1,7 @@
 {
   "type": "object",
   "properties": {
-    "assets": {
+    "items": {
       "type": "array",
       "description": "The IDs of assets",
       "example":  [1, 4, 100]
@@ -18,7 +18,7 @@
     },
     "study_procedure_identifier": {
       "type": "string",
-      "description": "The asset study procedure identifier",
+      "description": "The study procedure identifier",
       "example": "NSTAR"
     },
     "reason_for_moving": {
