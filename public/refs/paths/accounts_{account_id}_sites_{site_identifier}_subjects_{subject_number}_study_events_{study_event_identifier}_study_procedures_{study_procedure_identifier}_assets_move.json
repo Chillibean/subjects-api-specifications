@@ -102,7 +102,12 @@
               }
             },
             "required": [
-              "authenticity_token"
+              "authenticity_token",
+              "assets",
+              "subject_number",
+              "study_event_identifier",
+              "study_procedure_identifier",
+              "reason_for_moving"
             ],
             "additionalProperties": false
           }
