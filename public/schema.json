@@ -127,9 +127,6 @@
       "Asset": {
         "$ref": "refs/components/schemas/Asset.json"
       },
-      "AssetsMove": {
-        "$ref": "refs/components/schemas/AssetsMove.json"
-      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },

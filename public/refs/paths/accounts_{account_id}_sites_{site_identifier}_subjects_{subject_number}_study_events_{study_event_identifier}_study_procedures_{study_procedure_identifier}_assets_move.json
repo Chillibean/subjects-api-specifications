@@ -73,8 +73,38 @@
                 "description": "The authenticity token",
                 "example": "valid_token"
               },
-              "$ref": "../components/schemas/AssetsMove.json"
-            }
+              "assets": {
+                "type": "array",
+                "description": "Asset IDs",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "subject_number": {
+                "type": "string",
+                "description": "The subject number",
+                "example": "E0010023"
+              },
+              "study_event_identifier": {
+                "type": "string",
+                "description": "The study event identifier",
+                "example": "VISIT1"
+              },
+              "study_procedure_identifier": {
+                "type": "string",
+                "description": "The study procedure identifier",
+                "example": "NSTAR"
+              },
+              "reason_for_moving": {
+                "type": "string",
+                "description": "The reason for moving the assets",
+                "example": "Mistake"
+              }
+            },
+            "required": [
+              "authenticity_token"
+            ],
+            "additionalProperties": false
           }
         }
       }
