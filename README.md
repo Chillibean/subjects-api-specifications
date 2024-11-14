@@ -68,19 +68,20 @@ Here's an example of the development workflow:
 
 1. **`main`** is the default production branch, with the current version as **`1.0.10`**.
 2. You want to add a new endpoint.
-3. Create a branch from **`main`** with a new release number, such as **`1.0.11`**.
-4. **`1.0.11`** becomes the release branch.
+3. Create a branch from **`main`** with a new release number, such as **`1.1.10`**.
+4. **`1.1.10`** becomes the release branch.
 5. Create another branch named **`task/add-users-endpoint`**.
 6. Update **`/public/schema.json`** to include the new users' endpoint.
-7. Run **`npm version 1.0.11-alpha.0`**.
-8. Push to GitHub and create a pull request.
-9. A pre-release is generated, the Client SDK is rebuilt, and the package is published.
-10. Update your service with the new SDK to test the alpha version.
-11. If everything works, get approval to merge your branch into the release branch **`1.0.11`**.
-12. Once ready in **`1.0.11`**, get approval to merge into **`main`**.
-13. Merging into **`main`** generates a release, updates the Client SDK, and publishes a release package.
-14. Update your service with the new **`1.0.11`** version.
-15. Repeat!
+7. Run **`npm run bundle`** to bundle the **`/public/schema.json`** to generate **`/public/fullSchema.json`**.
+8. Run **`npm version 1.1.10-alpha.0`**.
+9. Push to GitHub and create a pull request.
+10. A pre-release is generated, the Client SDK is rebuilt, and the package is published.
+11. Update your service with the new SDK to test the alpha version.
+12. If everything works, get approval to merge your branch into the release branch **`1.0.10`**.
+13. Once ready in **`1.1.10`**, get approval to merge into **`main`**.
+14. Merging into **`main`** generates a release, updates the Client SDK, and publishes a release package.
+15. Update your service with the new **`1.1.10`** version.
+16. Repeat!
 
 Remember to edit the **`/public/schema.json`** file as needed to reflect the correct updated API specs.
 
@@ -131,7 +132,7 @@ You can run **`npm run lint`** to check the contents of **`/public/schema.json`*
 
 ## **Bundling**
 
-You can run **`npm run bunlde`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
+You can run **`npm run bundle`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
 
 *Note: This check is automatically performed before each commit.*
 
