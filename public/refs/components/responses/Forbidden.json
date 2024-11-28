@@ -12,8 +12,7 @@
             "enum": [
               "You do not have sufficient permission to perform this action",
               "Forbidden",
-              "You cannot perform this action because the study procedure is locked",
-              "You do not have permission to view or move unprocessed assets"
+              "You cannot perform this action because the study procedure is locked"
             ]
           }
         }
