@@ -176,7 +176,7 @@
         "$ref": "refs/components/schemas/User.json"
       },
       "Video": {
-        "$ref": "refs/components/schemas/Video.json"
+        "$ref": "refs/components/schemas/VideoTranscode.json"
       }
     }
   }

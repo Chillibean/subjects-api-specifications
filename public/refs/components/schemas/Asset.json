@@ -63,10 +63,10 @@
           "description": "The links to the asset media",
           "properties": {
             "sd_video": {
-              "$ref": "./Video.json"
+              "$ref": "./VideoTranscode.json"
             },
             "hd_video": {
-              "$ref": "./Video.json"
+              "$ref": "./VideoTranscode.json"
             }
           },
           "additionalProperties": false,
