@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.3.0",
+    "version": "2.3.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -2900,14 +2900,41 @@
             "example": "image"
           },
           "media": {
-            "type": "object",
-            "properties": {
-              "url": {
-                "type": "string",
-                "description": "The asset media url",
-                "example": "https://cp-dev-test.com"
+            "oneOf": [
+              {
+                "type": "object",
+                "description": "The links to the asset media",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The asset media url",
+                    "nullable": true,
+                    "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/test_data/Image.png"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "url"
+                ]
+              },
+              {
+                "type": "object",
+                "description": "The links to the asset media",
+                "properties": {
+                  "sd_video": {
+                    "$ref": "#/components/schemas/Video"
+                  },
+                  "hd_video": {
+                    "$ref": "#/components/schemas/Video"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "sd_video",
+                  "hd_video"
+                ]
               }
-            }
+            ]
           },
           "thumbnails": {
             "type": "object",
@@ -3662,6 +3689,43 @@
         ],
         "additionalProperties": false,
         "nullable": true
+      },
+      "Video": {
+        "type": "object",
+        "description": "The video transcode",
+        "properties": {
+          "url": {
+            "type": "string",
+            "nullable": true,
+            "description": "The asset  video url",
+            "example": "http://path-to-video"
+          },
+          "progress": {
+            "type": "string",
+            "nullable": true,
+            "description": "The asset video progress",
+            "example": "100"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "description": "The asset video status",
+            "example": "complete"
+          },
+          "frame_rate": {
+            "type": "string",
+            "nullable": true,
+            "description": "The asset video frame rate",
+            "example": "25"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "progress",
+          "status",
+          "frame_rate"
+        ]
       }
     },
     "responses": {
