@@ -15,25 +15,25 @@ The most critical file here is **`/public/schema.json`**. This file serves as th
 **If the repo already exists, follow these steps:**
 
 1. Clone the repository:
-    
-    ```bash
-    git clone https://github.com/Chillibean/subjects-api-specifications.git
-    ```
-    
+
+   ```bash
+   git clone https://github.com/Chillibean/subjects-api-specifications.git
+   ```
+
 2. Install all dependencies by running:
-    
-    ```bash
-    npm install
-    ```
-    
+
+   ```bash
+   npm install
+   ```
+
 3. Start the development environment:
-    
-    ```bash
-    npm run dev
-    ```
-    
-    This will initiate a development server running on port 5173. Follow the instructions in the terminal. Our setup uses Swagger UI to provide a user-friendly interface for your development needs.
-    
+
+   ```bash
+   npm run dev
+   ```
+
+   This will initiate a development server running on port 5173. Follow the instructions in the terminal. Our setup uses Swagger UI to provide a user-friendly interface for your development needs.
+
 4. Happy Hacking!
 
 Before you start, it's crucial to understand our Versioning and Branches guidelines. We've also provided a Developing Workflow Example to help you understand the development process.
@@ -68,20 +68,19 @@ Here's an example of the development workflow:
 
 1. **`main`** is the default production branch, with the current version as **`1.0.10`**.
 2. You want to add a new endpoint.
-3. Create a branch from **`main`** with a new release number, such as **`1.1.10`**.
-4. **`1.1.10`** becomes the release branch.
+3. Create a branch from **`main`** with a new release number, such as **`1.0.11`**.
+4. **`1.0.11`** becomes the release branch.
 5. Create another branch named **`task/add-users-endpoint`**.
 6. Update **`/public/schema.json`** to include the new users' endpoint.
-7. Run **`npm run bundle`** to bundle the **`/public/schema.json`** to generate **`/public/fullSchema.json`**.
-8. Run **`npm version 1.1.10-alpha.0`**.
-9. Push to GitHub and create a pull request.
-10. A pre-release is generated, the Client SDK is rebuilt, and the package is published.
-11. Update your service with the new SDK to test the alpha version.
-12. If everything works, get approval to merge your branch into the release branch **`1.0.10`**.
-13. Once ready in **`1.1.10`**, get approval to merge into **`main`**.
-14. Merging into **`main`** generates a release, updates the Client SDK, and publishes a release package.
-15. Update your service with the new **`1.1.10`** version.
-16. Repeat!
+7. Run **`npm version 1.0.11-alpha.0`**.
+8. Push to GitHub and create a pull request.
+9. A pre-release is generated, the Client SDK is rebuilt, and the package is published.
+10. Update your service with the new SDK to test the alpha version.
+11. If everything works, get approval to merge your branch into the release branch **`1.0.11`**.
+12. Once ready in **`1.0.11`**, get approval to merge into **`main`**.
+13. Merging into **`main`** generates a release, updates the Client SDK, and publishes a release package.
+14. Update your service with the new **`1.0.11`** version.
+15. Repeat!
 
 Remember to edit the **`/public/schema.json`** file as needed to reflect the correct updated API specs.
 
@@ -96,12 +95,12 @@ Key elements within the JSON file:
 - **`tags`**: Groupings of API endpoints. More details can be found [**here**](https://swagger.io/docs/specification/grouping-operations-with-tags/).
 - **`servers`**: Defines where the API endpoints can be tested, which is handy for integration with tools like Postman.
 - **`paths`**: Each path should include:
-    - **`summary`**: A brief description of the endpoint.
-    - **`operationId`**: A unique identifier for the operation (e.g., **`getExample`**).
-    - **`description`**: A more detailed explanation of the operation.
-    - **`parameters`**: Lists all required parameters. You can find an example in the auto-generated file.
-    - **`tags`**: An array of tags specified above, with each endpoint typically belonging to a single tag.
-    - **`responses`**: Each endpoint should have responses defined for 200, 400, 401, 409, and 500 HTTP status codes. You can copy and paste error responses if needed.
+  - **`summary`**: A brief description of the endpoint.
+  - **`operationId`**: A unique identifier for the operation (e.g., **`getExample`**).
+  - **`description`**: A more detailed explanation of the operation.
+  - **`parameters`**: Lists all required parameters. You can find an example in the auto-generated file.
+  - **`tags`**: An array of tags specified above, with each endpoint typically belonging to a single tag.
+  - **`responses`**: Each endpoint should have responses defined for 200, 400, 401, 409, and 500 HTTP status codes. You can copy and paste error responses if needed.
 
 ## **GitHub Pages**
 
@@ -132,7 +131,7 @@ You can run **`npm run lint`** to check the contents of **`/public/schema.json`*
 
 ## **Bundling**
 
-You can run **`npm run bundle`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
+You can run **`npm run bunlde`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
 
 *Note: This check is automatically performed before each commit.*
 

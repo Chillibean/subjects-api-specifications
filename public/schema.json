@@ -127,6 +127,9 @@
       "Asset": {
         "$ref": "refs/components/schemas/Asset.json"
       },
+      "AssetShort": {
+        "$ref": "refs/components/schemas/AssetShort.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
@@ -175,8 +178,8 @@
       "User": {
         "$ref": "refs/components/schemas/User.json"
       },
-      "Video": {
-        "$ref": "refs/components/schemas/Video.json"
+      "VideoTranscode": {
+        "$ref": "refs/components/schemas/VideoTranscode.json"
       }
     }
   }

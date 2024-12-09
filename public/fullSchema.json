@@ -1398,7 +1398,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Asset"
+                    "$ref": "#/components/schemas/AssetShort"
                   }
                 }
               }
@@ -2869,7 +2869,7 @@
           "title": {
             "type": "string",
             "description": "The asset title",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "example": "image.png"
           },
           "document_type": {
             "type": "string",
@@ -2879,11 +2879,11 @@
           "filename": {
             "type": "string",
             "description": "The asset filename",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "example": "image.png"
           },
           "created_at": {
             "type": "string",
-            "description": "The asset created at",
+            "description": "The asset created at date",
             "example": "2024-03-27T15:46:56.845Z"
           },
           "extension": {
@@ -2909,7 +2909,7 @@
                     "type": "string",
                     "description": "The asset media url",
                     "nullable": true,
-                    "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/test_data/Image.png"
+                    "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/assets/image.png"
                   }
                 },
                 "additionalProperties": false,
@@ -2922,10 +2922,10 @@
                 "description": "The links to the asset media",
                 "properties": {
                   "sd_video": {
-                    "$ref": "#/components/schemas/Video"
+                    "$ref": "#/components/schemas/VideoTranscode"
                   },
                   "hd_video": {
-                    "$ref": "#/components/schemas/Video"
+                    "$ref": "#/components/schemas/VideoTranscode"
                   }
                 },
                 "additionalProperties": false,
@@ -2942,13 +2942,13 @@
               "small": {
                 "type": "string",
                 "description": "The asset small thumbnail",
-                "example": "https://cp-dev-test.com",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-small/image.png",
                 "nullable": true
               },
               "large": {
                 "type": "string",
                 "description": "The asset large thumbnail",
-                "example": "https://cp-dev-test.com",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-large/image.png",
                 "nullable": true
               }
             }
@@ -2975,7 +2975,7 @@
           },
           "processed": {
             "type": "boolean",
-            "description": "The asset processed",
+            "description": "Is the asset processed",
             "example": true
           }
         },
@@ -2994,6 +2994,81 @@
           "subject_number",
           "position",
           "processed"
+        ],
+        "additionalProperties": false
+      },
+      "AssetShort": {
+        "description": "An asset",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "The asset created at date",
+            "example": "2024-03-27T15:46:56.845Z"
+          },
+          "extension": {
+            "type": "string",
+            "description": "The asset extension",
+            "example": "png"
+          },
+          "filename": {
+            "type": "string",
+            "description": "The asset filename",
+            "example": "image.png"
+          },
+          "id": {
+            "type": "number",
+            "description": "The asset id",
+            "example": 1
+          },
+          "media_type": {
+            "type": "string",
+            "description": "The asset media type",
+            "example": "image"
+          },
+          "position": {
+            "type": "number",
+            "description": "The asset position",
+            "example": 16
+          },
+          "processed": {
+            "type": "boolean",
+            "description": "Is the asset processed",
+            "example": true
+          },
+          "thumbnails": {
+            "type": "object",
+            "properties": {
+              "small": {
+                "type": "string",
+                "description": "The asset small thumbnail",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-small/image.png",
+                "nullable": true
+              },
+              "large": {
+                "type": "string",
+                "description": "The asset large thumbnail",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-large/image.png",
+                "nullable": true
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "description": "The asset title",
+            "example": "image.png"
+          }
+        },
+        "required": [
+          "created_at",
+          "extension",
+          "filename",
+          "id",
+          "media_type",
+          "position",
+          "processed",
+          "thumbnails",
+          "title"
         ],
         "additionalProperties": false
       },
@@ -3690,41 +3765,41 @@
         "additionalProperties": false,
         "nullable": true
       },
-      "Video": {
+      "VideoTranscode": {
         "type": "object",
         "description": "The video transcode",
         "properties": {
-          "url": {
+          "frame_rate": {
             "type": "string",
             "nullable": true,
-            "description": "The asset  video url",
-            "example": "http://path-to-video"
+            "description": "The video frame rate",
+            "example": "25"
           },
           "progress": {
             "type": "string",
             "nullable": true,
-            "description": "The asset video progress",
+            "description": "The video transcoding progress",
             "example": "100"
           },
           "status": {
             "type": "string",
             "nullable": true,
-            "description": "The asset video status",
+            "description": "The video transcoding status",
             "example": "complete"
           },
-          "frame_rate": {
+          "url": {
             "type": "string",
             "nullable": true,
-            "description": "The asset video frame rate",
-            "example": "25"
+            "description": "The video url",
+            "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/assets/video.mp4"
           }
         },
         "additionalProperties": false,
         "required": [
-          "url",
+          "frame_rate",
           "progress",
           "status",
-          "frame_rate"
+          "url"
         ]
       }
     },
