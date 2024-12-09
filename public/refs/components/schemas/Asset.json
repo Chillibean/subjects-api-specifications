@@ -10,7 +10,7 @@
     "title": {
       "type": "string",
       "description": "The asset title",
-      "example": "Screenshot 2024-03-15 at 12.28.21.png"
+      "example": "image.png"
     },
     "document_type": {
       "type": "string",
@@ -20,11 +20,11 @@
     "filename": {
       "type": "string",
       "description": "The asset filename",
-      "example": "Screenshot 2024-03-15 at 12.28.21.png"
+      "example": "image.png"
     },
     "created_at": {
       "type": "string",
-      "description": "The asset created at",
+      "description": "The asset created at date",
       "example": "2024-03-27T15:46:56.845Z"
     },
     "extension": {
@@ -41,14 +41,41 @@
       "example": "image"
     },
     "media": {
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string",
-          "description": "The asset media url",
-          "example": "https://cp-dev-test.com"
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "The links to the asset media",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The asset media url",
+              "nullable": true,
+              "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/assets/image.png"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "url"
+          ]
+        },
+        {
+          "type": "object",
+          "description": "The links to the asset media",
+          "properties": {
+            "sd_video": {
+              "$ref": "./VideoTranscode.json"
+            },
+            "hd_video": {
+              "$ref": "./VideoTranscode.json"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "sd_video",
+            "hd_video"
+          ]
         }
-      }
+      ]
     },
     "thumbnails": {
       "type": "object",
@@ -56,13 +83,13 @@
         "small": {
           "type": "string",
           "description": "The asset small thumbnail",
-          "example": "https://cp-dev-test.com",
+          "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-small/image.png",
           "nullable": true
         },
         "large": {
           "type": "string",
           "description": "The asset large thumbnail",
-          "example": "https://cp-dev-test.com",
+          "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-large/image.png",
           "nullable": true
         }
       }
@@ -89,7 +116,7 @@
     },
     "processed": {
       "type": "boolean",
-      "description": "The asset processed",
+      "description": "Is the asset processed",
       "example": true
     }
   },

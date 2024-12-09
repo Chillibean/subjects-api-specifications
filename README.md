@@ -15,25 +15,25 @@ The most critical file here is **`/public/schema.json`**. This file serves as th
 **If the repo already exists, follow these steps:**
 
 1. Clone the repository:
-    
-    ```bash
-    git clone https://github.com/Chillibean/subjects-api-specifications.git
-    ```
-    
+
+   ```bash
+   git clone https://github.com/Chillibean/subjects-api-specifications.git
+   ```
+
 2. Install all dependencies by running:
-    
-    ```bash
-    npm install
-    ```
-    
+
+   ```bash
+   npm install
+   ```
+
 3. Start the development environment:
-    
-    ```bash
-    npm run dev
-    ```
-    
-    This will initiate a development server running on port 5173. Follow the instructions in the terminal. Our setup uses Swagger UI to provide a user-friendly interface for your development needs.
-    
+
+   ```bash
+   npm run dev
+   ```
+
+   This will initiate a development server running on port 5173. Follow the instructions in the terminal. Our setup uses Swagger UI to provide a user-friendly interface for your development needs.
+
 4. Happy Hacking!
 
 Before you start, it's crucial to understand our Versioning and Branches guidelines. We've also provided a Developing Workflow Example to help you understand the development process.
@@ -95,12 +95,12 @@ Key elements within the JSON file:
 - **`tags`**: Groupings of API endpoints. More details can be found [**here**](https://swagger.io/docs/specification/grouping-operations-with-tags/).
 - **`servers`**: Defines where the API endpoints can be tested, which is handy for integration with tools like Postman.
 - **`paths`**: Each path should include:
-    - **`summary`**: A brief description of the endpoint.
-    - **`operationId`**: A unique identifier for the operation (e.g., **`getExample`**).
-    - **`description`**: A more detailed explanation of the operation.
-    - **`parameters`**: Lists all required parameters. You can find an example in the auto-generated file.
-    - **`tags`**: An array of tags specified above, with each endpoint typically belonging to a single tag.
-    - **`responses`**: Each endpoint should have responses defined for 200, 400, 401, 409, and 500 HTTP status codes. You can copy and paste error responses if needed.
+  - **`summary`**: A brief description of the endpoint.
+  - **`operationId`**: A unique identifier for the operation (e.g., **`getExample`**).
+  - **`description`**: A more detailed explanation of the operation.
+  - **`parameters`**: Lists all required parameters. You can find an example in the auto-generated file.
+  - **`tags`**: An array of tags specified above, with each endpoint typically belonging to a single tag.
+  - **`responses`**: Each endpoint should have responses defined for 200, 400, 401, 409, and 500 HTTP status codes. You can copy and paste error responses if needed.
 
 ## **GitHub Pages**
 

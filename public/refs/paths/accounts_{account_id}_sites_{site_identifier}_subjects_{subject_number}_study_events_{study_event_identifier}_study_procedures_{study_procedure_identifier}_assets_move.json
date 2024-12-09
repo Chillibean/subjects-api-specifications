@@ -3,7 +3,9 @@
     "summary": "Move assets between study procedures",
     "description": "Move assets between study procedures",
     "operationId": "moveAssets",
-    "tags": ["Study Procedure Assets"],
+    "tags": [
+      "Study Procedure Assets"
+    ],
     "security": [
       {
         "userSessionKey": [],
@@ -122,7 +124,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "../components/schemas/Asset.json"
+                "$ref": "../components/schemas/AssetShort.json"
               }
             }
           }
