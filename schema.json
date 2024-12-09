@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.3.0",
+    "version": "2.3.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -127,6 +127,9 @@
       "Asset": {
         "$ref": "refs/components/schemas/Asset.json"
       },
+      "AssetShort": {
+        "$ref": "refs/components/schemas/AssetShort.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
@@ -174,6 +177,9 @@
       },
       "User": {
         "$ref": "refs/components/schemas/User.json"
+      },
+      "VideoTranscode": {
+        "$ref": "refs/components/schemas/VideoTranscode.json"
       }
     }
   }

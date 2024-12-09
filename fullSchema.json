@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.3.0",
+    "version": "2.3.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -1398,7 +1398,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Asset"
+                    "$ref": "#/components/schemas/AssetShort"
                   }
                 }
               }
@@ -2869,7 +2869,7 @@
           "title": {
             "type": "string",
             "description": "The asset title",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "example": "image.png"
           },
           "document_type": {
             "type": "string",
@@ -2879,11 +2879,11 @@
           "filename": {
             "type": "string",
             "description": "The asset filename",
-            "example": "Screenshot 2024-03-15 at 12.28.21.png"
+            "example": "image.png"
           },
           "created_at": {
             "type": "string",
-            "description": "The asset created at",
+            "description": "The asset created at date",
             "example": "2024-03-27T15:46:56.845Z"
           },
           "extension": {
@@ -2900,14 +2900,41 @@
             "example": "image"
           },
           "media": {
-            "type": "object",
-            "properties": {
-              "url": {
-                "type": "string",
-                "description": "The asset media url",
-                "example": "https://cp-dev-test.com"
+            "oneOf": [
+              {
+                "type": "object",
+                "description": "The links to the asset media",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The asset media url",
+                    "nullable": true,
+                    "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/assets/image.png"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "url"
+                ]
+              },
+              {
+                "type": "object",
+                "description": "The links to the asset media",
+                "properties": {
+                  "sd_video": {
+                    "$ref": "#/components/schemas/VideoTranscode"
+                  },
+                  "hd_video": {
+                    "$ref": "#/components/schemas/VideoTranscode"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "sd_video",
+                  "hd_video"
+                ]
               }
-            }
+            ]
           },
           "thumbnails": {
             "type": "object",
@@ -2915,13 +2942,13 @@
               "small": {
                 "type": "string",
                 "description": "The asset small thumbnail",
-                "example": "https://cp-dev-test.com",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-small/image.png",
                 "nullable": true
               },
               "large": {
                 "type": "string",
                 "description": "The asset large thumbnail",
-                "example": "https://cp-dev-test.com",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-large/image.png",
                 "nullable": true
               }
             }
@@ -2948,7 +2975,7 @@
           },
           "processed": {
             "type": "boolean",
-            "description": "The asset processed",
+            "description": "Is the asset processed",
             "example": true
           }
         },
@@ -2967,6 +2994,81 @@
           "subject_number",
           "position",
           "processed"
+        ],
+        "additionalProperties": false
+      },
+      "AssetShort": {
+        "description": "An asset",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "The asset created at date",
+            "example": "2024-03-27T15:46:56.845Z"
+          },
+          "extension": {
+            "type": "string",
+            "description": "The asset extension",
+            "example": "png"
+          },
+          "filename": {
+            "type": "string",
+            "description": "The asset filename",
+            "example": "image.png"
+          },
+          "id": {
+            "type": "number",
+            "description": "The asset id",
+            "example": 1
+          },
+          "media_type": {
+            "type": "string",
+            "description": "The asset media type",
+            "example": "image"
+          },
+          "position": {
+            "type": "number",
+            "description": "The asset position",
+            "example": 16
+          },
+          "processed": {
+            "type": "boolean",
+            "description": "Is the asset processed",
+            "example": true
+          },
+          "thumbnails": {
+            "type": "object",
+            "properties": {
+              "small": {
+                "type": "string",
+                "description": "The asset small thumbnail",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-small/image.png",
+                "nullable": true
+              },
+              "large": {
+                "type": "string",
+                "description": "The asset large thumbnail",
+                "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/thumbnails-large/image.png",
+                "nullable": true
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "description": "The asset title",
+            "example": "image.png"
+          }
+        },
+        "required": [
+          "created_at",
+          "extension",
+          "filename",
+          "id",
+          "media_type",
+          "position",
+          "processed",
+          "thumbnails",
+          "title"
         ],
         "additionalProperties": false
       },
@@ -3662,6 +3764,43 @@
         ],
         "additionalProperties": false,
         "nullable": true
+      },
+      "VideoTranscode": {
+        "type": "object",
+        "description": "The video transcode",
+        "properties": {
+          "frame_rate": {
+            "type": "string",
+            "nullable": true,
+            "description": "The video frame rate",
+            "example": "25"
+          },
+          "progress": {
+            "type": "string",
+            "nullable": true,
+            "description": "The video transcoding progress",
+            "example": "100"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "description": "The video transcoding status",
+            "example": "complete"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true,
+            "description": "The video url",
+            "example": "https://eu-west-4-chillipharm-bucket.s3.eu-west-4.amazonaws.com/assets/video.mp4"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "frame_rate",
+          "progress",
+          "status",
+          "url"
+        ]
       }
     },
     "responses": {
