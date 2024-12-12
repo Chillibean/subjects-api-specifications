@@ -367,6 +367,11 @@
                     "description": "The study cohort id",
                     "example": 1,
                     "nullable": true
+                  },
+                  "number": {
+                    "type": "string",
+                    "description": "The subject number",
+                    "example": "12345678"
                   }
                 },
                 "required": [
