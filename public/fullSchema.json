@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.3.1",
+    "version": "2.3.2-alpha.1",
     "title": "Subjects API",
     "description": "This is the api specifications for all things related to subjects.",
     "contact": {
@@ -367,6 +367,16 @@
                     "description": "The study cohort id",
                     "example": 1,
                     "nullable": true
+                  },
+                  "number": {
+                    "type": "string",
+                    "description": "The subject number",
+                    "example": "12345678"
+                  },
+                  "reason_for_change": {
+                    "type": "string",
+                    "description": "The reason for change",
+                    "example": "Reason 1"
                   }
                 },
                 "required": [
