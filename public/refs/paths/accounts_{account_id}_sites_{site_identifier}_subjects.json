@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get all study subjects for a site",
+    "description": "Get all subjects for a site",
+    "operationId": "getSubjects",
+    "tags": [
+      "Study Subjects"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getSubjects",
-    "description": "Get all subjects for a site",
     "parameters": [
       {
         "name": "account_id",
@@ -33,16 +34,16 @@
         }
       }
     ],
-    "tags": [
-      "Study Subjects"
-    ],
     "responses": {
       "200": {
         "description": "List of Subjects is returned",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/StudySubjects.json"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/StudySubject.json"
+              }
             }
           }
         }
@@ -69,16 +70,17 @@
   },
   "post": {
     "summary": "Create a study subject for a site",
+    "description": "Create a study subject for a site",
+    "operationId": "createSubject",
+    "tags": [
+      "Study Subjects"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "createSubject",
-    "description": "Create a study subject for a site",
     "parameters": [
       {
         "name": "account_id",
@@ -112,21 +114,35 @@
                 "description": "The authenticity token",
                 "example": "valid_token"
               },
-              "subject_number": {
+              "number": {
                 "type": "string",
                 "description": "The subject number",
-                "example": "E0001004"
+                "example": "12345678"
+              },
+              "study_arm_id": {
+                "type": "integer",
+                "description": "The study arm id",
+                "example": 1,
+                "nullable": true
+              },
+              "study_cohort_id": {
+                "type": "integer",
+                "description": "The study cohort id",
+                "example": 1,
+                "nullable": true
               }
-            }
+            },
+            "required": [
+              "authenticity_token",
+              "number"
+            ],
+            "additionalProperties": false
           }
         }
       }
     },
-    "tags": [
-      "Study Subjects"
-    ],
     "responses": {
-      "200": {
+      "201": {
         "description": "Created a study subject",
         "content": {
           "application/json": {

@@ -1,8 +1,8 @@
 {
-  "post": {
-    "summary": "Create an unscheduled study event",
-    "description": "Create an unscheduled study event",
-    "operationId": "createStudyEvent",
+  "get": {
+    "summary": "Get all study events for a study subject",
+    "description": "Get all study events for a study subject",
+    "operationId": "getStudyEvents",
     "tags": [
       "Study Events"
     ],
@@ -40,7 +40,86 @@
         "required": true,
         "schema": {
           "type": "string",
+          "example": "12345678"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Returns a list of all study events for a study subject",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/StudyEvent.json"
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorized.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
+      }
+    }
+  },
+  "post": {
+    "summary": "Create an unscheduled study event",
+    "description": "Create an unscheduled study event",
+    "operationId": "createUnscheduledStudyEvent",
+    "tags": [
+      "Study Events"
+    ],
+    "security": [
+      {
+        "userSessionKey": [],
+        "chillipharmSession": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "account_id",
+        "in": "path",
+        "description": "The account id",
+        "required": true,
+        "schema": {
+          "type": "string",
           "example": "1"
+        }
+      },
+      {
+        "name": "site_identifier",
+        "in": "path",
+        "description": "The site identifier",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "SITE1"
+        }
+      },
+      {
+        "name": "subject_number",
+        "in": "path",
+        "description": "The subject number",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "12345678"
         }
       }
     ],
@@ -64,9 +143,9 @@
                 "type": "array",
                 "description": "The procedures that took place during this unscheduled study event",
                 "example": [
-                  "SIXWALK",
-                  "PUL",
-                  "NSTAR"
+                  "PROC1",
+                  "PROC2",
+                  "PROC3"
                 ]
               }
             },
@@ -79,21 +158,21 @@
       }
     },
     "responses": {
-      "200": {
+      "201": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "study_event": {
-                  "$ref": "../components/schemas/StudyEvent.json"
-                },
                 "schedule": {
                   "type": "array",
                   "items": {
                     "$ref": "../components/schemas/StudyEvent.json"
                   }
+                },
+                "study_event": {
+                  "$ref": "../components/schemas/StudyEvent.json"
                 }
               },
               "required": [

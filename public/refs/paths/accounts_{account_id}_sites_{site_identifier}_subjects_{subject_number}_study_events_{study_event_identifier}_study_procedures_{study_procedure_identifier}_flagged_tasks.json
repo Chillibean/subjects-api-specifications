@@ -1,9 +1,11 @@
 {
   "post": {
-    "summary": "Creating a flagged task",
+    "summary": "Create a flagged task",
     "description": "This endpoint creates a flagged task for a study procedure",
-    "operationId": "createFlaggedTask",
-    "tags": ["Study Procedure Tasks"],
+    "operationId": "createStudyProcedureFlaggedTask",
+    "tags": [
+      "Study Procedure Tasks"
+    ],
     "security": [
       {
         "userSessionKey": [],
@@ -58,7 +60,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "PROCEDURE1"
+          "example": "PROC1"
         }
       }
     ],
@@ -92,7 +94,7 @@
       }
     },
     "responses": {
-      "200": {
+      "201": {
         "description": "Task flagged successfully",
         "content": {
           "application/json": {

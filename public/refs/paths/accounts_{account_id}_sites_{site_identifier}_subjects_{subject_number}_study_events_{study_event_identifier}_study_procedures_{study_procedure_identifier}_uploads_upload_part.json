@@ -2,7 +2,7 @@
   "post": {
     "summary": "Upload a part of a multipart upload",
     "description": "Upload a part of a multipart upload",
-    "operationId": "postUploadPart",
+    "operationId": "uploadPart",
     "tags": [
       "Study Procedure Uploads"
     ],

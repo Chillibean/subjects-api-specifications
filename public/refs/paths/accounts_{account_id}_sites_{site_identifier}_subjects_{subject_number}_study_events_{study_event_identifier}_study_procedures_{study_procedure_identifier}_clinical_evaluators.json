@@ -1,8 +1,8 @@
 {
   "get": {
-    "summary": "Get all valid clinical evaluator options for a study procedure",
-    "description": "Get all valid clinical evaluator options for a study procedure",
-    "operationId": "getStudyProcedureClinicalEvaluatorList",
+    "summary": "Get all valid clinical evaluator for a study procedure",
+    "description": "Get all valid clinical evaluator for a study procedure",
+    "operationId": "getStudyProcedureClinicalEvaluators",
     "tags": [
       "Study Procedure Clinical Evaluators"
     ],

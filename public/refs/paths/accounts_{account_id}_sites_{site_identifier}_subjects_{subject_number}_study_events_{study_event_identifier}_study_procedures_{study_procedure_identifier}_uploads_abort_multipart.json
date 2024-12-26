@@ -2,7 +2,7 @@
   "delete": {
     "summary": "Abort a multipart upload",
     "description": "Abort a multipart upload",
-    "operationId": "deleteAbortMultipart",
+    "operationId": "abortUpload",
     "tags": [
       "Study Procedure Uploads"
     ],

@@ -2,7 +2,7 @@
   "put": {
     "summary": "Move assets between study procedures",
     "description": "Move assets between study procedures",
-    "operationId": "moveAssets",
+    "operationId": "moveStudyProcedureAssets",
     "tags": [
       "Study Procedure Assets"
     ],
@@ -79,13 +79,13 @@
                 "type": "array",
                 "description": "Asset IDs",
                 "items": {
-                  "type": "number"
+                  "type": "integer"
                 }
               },
               "subject_number": {
                 "type": "string",
                 "description": "The subject number",
-                "example": "E0010023"
+                "example": "12345678"
               },
               "study_event_identifier": {
                 "type": "string",
@@ -95,7 +95,7 @@
               "study_procedure_identifier": {
                 "type": "string",
                 "description": "The study procedure identifier",
-                "example": "NSTAR"
+                "example": "PROC1"
               },
               "reason_for_moving": {
                 "type": "string",

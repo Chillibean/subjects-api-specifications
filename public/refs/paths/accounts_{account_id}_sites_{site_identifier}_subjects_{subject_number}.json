@@ -8,9 +8,7 @@
     ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
@@ -42,7 +40,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "1"
+          "example": "12345678"
         }
       }
     ],
@@ -52,17 +50,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "properties": {
-                "schedule": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../components/schemas/StudyEvent.json"
-                  }
-                },
-                "subject": {
-                  "$ref": "../components/schemas/StudySubject.json"
-                }
-              }
+              "$ref": "../components/schemas/StudySubject.json"
             }
           }
         }
@@ -96,9 +84,7 @@
     ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
@@ -146,13 +132,13 @@
                 "example": "valid_token"
               },
               "study_arm_id": {
-                "type": "number",
+                "type": "integer",
                 "description": "The study arm id",
                 "example": 1,
                 "nullable": true
               },
               "study_cohort_id": {
-                "type": "number",
+                "type": "integer",
                 "description": "The study cohort id",
                 "example": 1,
                 "nullable": true

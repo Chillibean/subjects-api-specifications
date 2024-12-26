@@ -1,10 +1,10 @@
 {
-  "get": {
-    "summary": "Get all tasks for a study procedure",
-    "description": "Get all tasks for a study procedure",
-    "operationId": "getStudyProcedureTasks",
+  "put": {
+    "summary": "Update an asset in a study procedure",
+    "description": "Update an asset in a study procedure",
+    "operationId": "updateStudyProcedureAsset",
     "tags": [
-      "Study Procedure Tasks"
+      "Study Procedure Assets"
     ],
     "security": [
       {
@@ -62,44 +62,43 @@
           "type": "string",
           "example": "PROC1"
         }
+      },
+      {
+        "name": "asset_id",
+        "in": "path",
+        "description": "The asset id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        }
       }
     ],
+    "requestBody": {
+      "description": "Asset update parameters",
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "filename": {
+                "type": "string",
+                "description": "The asset filename",
+                "example": "video.mp4"
+              }
+            }
+          }
+        }
+      }
+    },
     "responses": {
       "200": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "tasks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../components/schemas/Task.json"
-                  }
-                },
-                "flagged_tasks": {
-                  "type": "object",
-                  "properties": {
-                    "tasks": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "../components/schemas/FlaggedTask.json"
-                      }
-                    },
-                    "complete": {
-                      "type": "boolean",
-                      "description": "Whether all flagged tasks are completed",
-                      "example": true
-                    }
-                  }
-                },
-                "tasks_complete": {
-                  "type": "boolean",
-                  "description": "Whether all tasks are completed",
-                  "example": true
-                }
-              }
+              "$ref": "../components/schemas/Asset.json"
             }
           }
         }

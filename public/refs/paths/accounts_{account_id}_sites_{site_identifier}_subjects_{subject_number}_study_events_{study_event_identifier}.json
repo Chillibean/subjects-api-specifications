@@ -40,7 +40,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "1"
+          "example": "12345678"
         }
       },
       {
@@ -60,7 +60,6 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
               "$ref": "../components/schemas/StudyEvent.json"
             }
           }
@@ -127,7 +126,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "1"
+          "example": "12345678"
         }
       },
       {
@@ -159,7 +158,8 @@
               }
             },
             "required": [
-              "authenticity_token"
+              "authenticity_token",
+              "date"
             ],
             "additionalProperties": false
           }
@@ -174,14 +174,14 @@
             "schema": {
               "type": "object",
               "properties": {
-                "study_event": {
-                  "$ref": "../components/schemas/StudyEvent.json"
-                },
                 "schedule": {
                   "type": "array",
                   "items": {
                     "$ref": "../components/schemas/StudyEvent.json"
                   }
+                },
+                "study_event": {
+                  "$ref": "../components/schemas/StudyEvent.json"
                 }
               },
               "required": [

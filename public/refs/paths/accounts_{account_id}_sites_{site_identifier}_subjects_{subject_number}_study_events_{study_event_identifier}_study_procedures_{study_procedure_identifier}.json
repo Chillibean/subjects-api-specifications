@@ -97,17 +97,17 @@
   },
   "put": {
     "summary": "Update a study procedure",
+    "description": "Update a study procedure",
+    "operationId": "updateStudyProcedure",
+    "tags": [
+      "Study Procedures"
+    ],
     "security": [
       {
         "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "tags": [
-      "Study Procedures"
-    ],
-    "operationId": "updateStudyProcedure",
-    "description": "Update a study procedure",
     "parameters": [
       {
         "name": "account_id",
@@ -161,7 +161,6 @@
       }
     ],
     "requestBody": {
-      "description": "The study procedure",
       "required": true,
       "content": {
         "application/json": {

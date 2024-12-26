@@ -101,7 +101,7 @@
   "post": {
     "summary": "Create a study procedure update record",
     "description": "Create a study procedure update record",
-    "operationId": "postStudyProcedureUpdate",
+    "operationId": "createStudyProcedureUpdate",
     "tags": [
       "Study Procedure Updates"
     ],
@@ -185,7 +185,7 @@
       }
     },
     "responses": {
-      "200": {
+      "201": {
         "description": "OK",
         "content": {
           "application/json": {

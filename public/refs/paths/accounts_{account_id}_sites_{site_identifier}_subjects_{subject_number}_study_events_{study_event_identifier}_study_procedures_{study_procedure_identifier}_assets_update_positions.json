@@ -1,14 +1,14 @@
 {
-  "put": {
-    "summary": "Update a flagged task",
-    "description": "Update a flagged task",
-    "operationId": "updateFlaggedTask",
-    "tags": ["Study Procedure Tasks"],
+  "post": {
+    "summary": "Reorder the assets in a study procedure",
+    "description": "Reorder the assets in a study procedure",
+    "operationId": "reorderStudyProcedureAssets",
+    "tags": [
+      "Study Procedure Assets"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
@@ -60,47 +60,29 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "PROCEDURE1"
-        }
-      },
-      {
-        "name": "id",
-        "in": "path",
-        "description": "The flagged task id",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "example": "e390325f-d528-4704-80ec-1dec0f317268"
+          "example": "PROC1"
         }
       }
     ],
     "requestBody": {
+      "description": "Asset position parameters",
+      "required": true,
       "content": {
         "application/json": {
           "schema": {
-            "type": "object",
-            "properties": {
-              "authenticity_token": {
-                "type": "string",
-                "description": "The authenticity token",
-                "example": "valid_token"
-              },
-              "reason_for_creation": {
-                "type": "string",
-                "description": "The reason for flagging the task",
-                "example": "Please update the asset names"
-              },
-              "reason_for_resolving": {
-                "type": "string",
-                "description": "The reason for resolving the task",
-                "example": "This has been completed"
-              },
-              "notify_users_list": {
-                "type": "array",
-                "description": "The list of user emails to notify",
-                "items": {
-                  "type": "string",
-                  "example": "test@gmail.com"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The asset id",
+                  "example": 1
+                },
+                "position": {
+                  "type": "integer",
+                  "description": "The asset position",
+                  "example": 1
                 }
               }
             }
@@ -110,25 +92,13 @@
     },
     "responses": {
       "200": {
-        "description": "Flagged task updated successfully",
+        "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "flagged_tasks": {
-                  "items": {
-                    "$ref": "../components/schemas/FlaggedTask.json"
-                  }
-                },
-                "flagged_tasks_complete": {
-                  "type": "boolean",
-                  "description": "Flagged tasks completed"
-                },
-                "all_tasks_complete": {
-                  "type": "boolean",
-                  "description": "All tasks completed"
-                }
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/AssetShort.json"
               }
             }
           }

@@ -11,20 +11,24 @@
   },
   "tags": [
     {
-      "name": "Study Events",
-      "description": "Endpoints for Study Events"
-    },
-    {
       "name": "Study Subjects",
       "description": "Endpoints for Study Subjects"
+    },
+    {
+      "name": "Study Events",
+      "description": "Endpoints for Study Events"
     },
     {
       "name": "Study Procedures",
       "description": "Endpoints for Study Procedures"
     },
     {
-      "name": "Study Procedure Uploads",
-      "description": "Endpoints for uploading study procedure uploads"
+      "name": "Study Procedure Assets",
+      "description": "Endpoints for Study Procedure Assets"
+    },
+    {
+      "name": "Study Procedure Clinical Evaluators",
+      "description": "Endpoints for study procedure clinical evaluators"
     },
     {
       "name": "Study Procedure Tasks",
@@ -35,14 +39,26 @@
       "description": "Endpoints for study procedure updates"
     },
     {
-      "name": "Study Procedure Clinical Evaluators",
-      "description": "Endpoints for study procedure clinical evaluators"
+      "name": "Study Procedure Uploads",
+      "description": "Endpoints for uploading study procedure uploads"
     }
   ],
   "servers": [
     {
       "url": "http://chillipharm.test:3000/api/v1",
       "description": "Local development"
+    },
+    {
+      "url": "https://qa.chillipharm.dev/api/v1",
+      "description": "QA"
+    },
+    {
+      "url": "https://chillipharm-staging.com/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://chillipharm-uat.com/api/v1",
+      "description": "UAT"
     },
     {
       "url": "https://www.chillipharm.com/api/v1",
@@ -56,12 +72,6 @@
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/scheduled_study_events": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_scheduled_study_events.json"
-    },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/unscheduled_study_events": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_unscheduled_study_events.json"
-    },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events.json"
     },
@@ -74,38 +84,47 @@
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}.json"
     },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/assets": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_assets.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/assets/{asset_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_assets_{asset_id}.json"
+    },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/assets/move": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_assets_move.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/tasks": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_tasks.json"
-    },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/tasks/{id}": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_tasks_{id}.json"
-    },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/updates": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_updates.json"
-    },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/start_multipart": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_start_multipart.json"
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/assets/update_positions": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_assets_update_positions.json"
     },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/clinical_evaluators": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_clinical_evaluators.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/upload_part": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_upload_part.json"
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_flagged_tasks.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/complete_multipart": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_complete_multipart.json"
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks/{task_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_flagged_tasks_{task_id}.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/tasks": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_tasks.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/tasks/{task_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_tasks_{task_id}.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/updates": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_updates.json"
     },
     "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/abort_multipart": {
       "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_abort_multipart.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_flagged_tasks.json"
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/complete_multipart": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_complete_multipart.json"
     },
-    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/flagged_tasks/{id}": {
-      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_flagged_tasks_{id}.json"
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/start_multipart": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_start_multipart.json"
+    },
+    "/accounts/{account_id}/sites/{site_identifier}/subjects/{subject_number}/study_events/{study_event_identifier}/study_procedures/{study_procedure_identifier}/uploads/upload_part": {
+      "$ref": "refs/paths/accounts_{account_id}_sites_{site_identifier}_subjects_{subject_number}_study_events_{study_event_identifier}_study_procedures_{study_procedure_identifier}_uploads_upload_part.json"
     }
   },
   "components": {
@@ -168,9 +187,6 @@
       },
       "StudySubject": {
         "$ref": "refs/components/schemas/StudySubject.json"
-      },
-      "StudySubjects": {
-        "$ref": "refs/components/schemas/StudySubjects.json"
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"

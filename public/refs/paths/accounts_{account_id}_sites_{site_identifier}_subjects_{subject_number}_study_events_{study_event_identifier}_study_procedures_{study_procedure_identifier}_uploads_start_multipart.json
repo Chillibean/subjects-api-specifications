@@ -2,7 +2,7 @@
   "post": {
     "summary": "Start a multipart upload",
     "description": "Start a multipart upload",
-    "operationId": "postStartMultipart",
+    "operationId": "startUpload",
     "tags": [
       "Study Procedure Uploads"
     ],
@@ -91,7 +91,7 @@
       }
     },
     "responses": {
-      "200": {
+      "201": {
         "description": "OK",
         "content": {
           "application/json": {
