@@ -261,15 +261,7 @@
           "application/json": {
             "schema": {
               "properties": {
-                "schedule": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../components/schemas/StudyEvent.json"
-                  }
-                },
-                "subject": {
-                  "$ref": "../components/schemas/StudySubject.json"
-                }
+                "$ref": "../components/schemas/StudySubject.json"
               }
             }
           }
